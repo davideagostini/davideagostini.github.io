@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Davide Agostini",
   desc: "The personal site of Davide Agostini software mobile engineer",
   title: "Davide Agostini",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "mesh-gradient.jpg",
   lightAndDarkMode: true,
   postPerPage: 10,
 };
@@ -43,7 +43,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "LinkedIn",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://www.linkedin.com/in/davideagostini/",
     linkTitle: `${SITE.title} on LinkedIn`,
     active: true,
   },
