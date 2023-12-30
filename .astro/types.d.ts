@@ -203,13 +203,6 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"come-rimanere-concentrati-e-non-distrarsi.md": {
-	id: "come-rimanere-concentrati-e-non-distrarsi.md";
-  slug: "stay-focused";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
 "create-a-bouncing-button-animation-in-flutter.md": {
 	id: "create-a-bouncing-button-animation-in-flutter.md";
   slug: "create-a-bouncing-button-animation-in-flutter";
@@ -238,13 +231,6 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"perche-e-importante-conoscere-la-programmazione.md": {
-	id: "perche-e-importante-conoscere-la-programmazione.md";
-  slug: "perche-conoscere-il-coding";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
 "ransom-note-challenge-in-kotlin.md": {
 	id: "ransom-note-challenge-in-kotlin.md";
   slug: "ransom-note-challenge-in-kotlin";
@@ -252,9 +238,23 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"strategies-to-overcome-distractions-and-boost-productivity.md": {
+	id: "strategies-to-overcome-distractions-and-boost-productivity.md";
+  slug: "strategies-to-overcome-distractions-and-boost-productivity";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "why-you-should-learn-dart-and-flutter.md": {
 	id: "why-you-should-learn-dart-and-flutter.md";
   slug: "why-you-should-learn-dart-and-flutter";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"why-you-should-learn-programming.md": {
+	id: "why-you-should-learn-programming.md";
+  slug: "why-you-should-learn-programming";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

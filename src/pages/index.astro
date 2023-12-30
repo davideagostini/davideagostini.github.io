@@ -12,7 +12,7 @@ import { SOCIALS } from "@config";
 
 const posts = await getCollection("blog");
 
-const sortedPosts = getSortedPosts(posts);
+const sortedPosts = await getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
@@ -68,7 +68,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     <Hr />
 
-    {
+    <!--{
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
@@ -86,17 +86,17 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           <Hr />
         </>
       )
-    }
+    }-->
 
     <section id="recent-posts">
-      <!--<h2>Recent Posts</h2>
+      <h2>Recent Posts</h2>
       <ul>
         {
           sortedPosts
             .filter(({ data }) => !data.featured)
             .map(
               ({ data, slug }, index) =>
-                index < 4 && (
+                index < 5 && (
                   <Card
                     href={`/posts/${slug}`}
                     frontmatter={data}
@@ -105,7 +105,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                 )
             )
         }
-      </ul>-->
+      </ul>
       <div class="all-posts-btn-wrapper">
         <LinkButton href="/posts">
           All Posts
