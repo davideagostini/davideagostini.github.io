@@ -5,6 +5,7 @@ import getUniqueTags from "@utils/getUniqueTags";
 import getPostsByTag from "@utils/getPostsByTag";
 import getPageNumbers from "@utils/getPageNumbers";
 import getPagination from "@utils/getPagination";
+import getPostsWithRT from "@utils/getPostsWithRT";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -14,8 +15,9 @@ export interface Props {
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-
-  const tags = getUniqueTags(posts);
+  const postsWithRT = await getPostsWithRT(posts); 
+  
+  const tags = getUniqueTags(postsWithRT);
 
   return tags.flatMap(({ tag, tagName }) => {
     const tagPosts = getPostsByTag(posts, tag);
@@ -33,7 +35,7 @@ const { tag, tagName } = Astro.props;
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-const postsByTag = getPostsByTag(posts, tag);
+const postsByTag = await getPostsByTag(posts, tag);
 
 const pagination = getPagination({
   posts: postsByTag,
