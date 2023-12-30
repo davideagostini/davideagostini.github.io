@@ -30,7 +30,7 @@ Having a programmer's mindset means analyzing each problem from various angles, 
 Learning to think in a non-linear manner by breaking down processes into sub-processes instills this attitude in all spheres, including personal ones. It teaches us to see things from multiple perspectives and evaluate more options, concretely applying this way of processing information to everyday life. Considering that organizing problems in this way undoubtedly helps in facing life's challenges more effectively.
 
 <div class="container-image">
-    <img  src="/assets/coding_cartoon.jpg" alt="Coding cartoon">
+    <img width="400" src="/assets/coding_cartoon.jpg" alt="Coding cartoon">
 </div>
 
 ## 3. Better Understanding of Technology

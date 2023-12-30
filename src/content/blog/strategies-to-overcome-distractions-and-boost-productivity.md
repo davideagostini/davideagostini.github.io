@@ -23,7 +23,7 @@ Each one of us, at some point in life, has doubted their mental capabilities. Su
 Now that we know the reasons for distraction, we can move on to the next step, which is to analyze some techniques to stay focused. Hopefully, after reading this article, at least one of these techniques will become a guide against distractions.
 
 <div class="container-image">
-    <img  src="/assets/distractions_cartoon.jpg" alt="Distractions cartoon">
+    <img width="500" src="/assets/distractions_cartoon.jpg" alt="Distractions cartoon">
 </div>
 
 ## Embracing Distractions
@@ -61,7 +61,7 @@ It's important to note that the distinction between healthy and unhealthy distra
 Smartphones easily attract our attention, leading to frequent distractions with notifications, short or long calls, ultimately hindering our concentration.
 
 <div class="container-image">
-    <img  src="/assets/smartphone_cartoon.jpg" alt="Smartphone cartoon">
+    <img width="500" src="/assets/smartphone_cartoon.jpg" alt="Smartphone cartoon">
 </div>
 	
 To break free from this habit that often leads to distraction, consider distancing the phone from yourself and putting it on silent mode, reducing the temptation to constantly check social media. Personally, I have found that putting my phone in airplane mode and face down when I need to focus on important tasks helps me resist the temptation, allowing me to stay concentrated for longer periods.
@@ -99,7 +99,7 @@ There are two highly useful productivity techniques that can be combined:
 **Daily Review:** Outline the things you want to accomplish each day by making a list of priorities. Once you determine what you want to achieve, it becomes much easier to start working.
 
 <div class="container-image">
-    <img  src="/assets/stay-focused-cartoon.jpg" alt="Stay focused cartoon">
+    <img width="500" src="/assets/stay-focused-cartoon.jpg" alt="Stay focused cartoon">
 </div>
 
 ## Conclusion
