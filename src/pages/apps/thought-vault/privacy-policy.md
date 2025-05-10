@@ -1,5 +1,5 @@
 # Privacy Policy for AI Note Taker - Thought Vault
-Last Updated: May 9, 2025
+**Last Updated:** May 10, 2025  
 
 ### Introduction
 AI Note Taker - Thought Vault, developed by Davide Simone Agostini, is committed to protecting your privacy. This Privacy Policy outlines how we handle information when you use our iOS application and related services.
