@@ -20,7 +20,7 @@ We do not retain user-submitted photos, prompts, or personal data. Any aggregate
 We do not sell, trade, or share your data with third parties for marketing purposes. However:
 
 - **Gemini API:** AI Note Taker - Thought Vault conversions are processed via third-party AI services (Gemini API). Your inputs are subject to Gemini’s [Privacy Policy](https://ai.google.dev/gemini-api/terms?hl=it).
-- **RevenueCat:** In-app purchases are managed by RevenueCat. See their [Privacy Policy](https://www.revenuecat.com/privacy/).
+- **Apple Subscriptions:** In-app purchases are managed by Apple. See their [Privacy Policy](https://www.apple.com/legal/privacy/en-ww/).
 - **Apple:** If you request refunds, we may share usage data with Apple to facilitate resolution, per Apple’s policies.
 
 ### Disclaimer on AI Conversions
