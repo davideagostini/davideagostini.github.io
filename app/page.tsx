@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Twitter, ArrowRight, Pin } from "lucide-react";
@@ -58,12 +57,22 @@ export default function Home() {
           </h2>
           <article className="prose prose-zinc dark:prose-invert leading-normal space-y-4 text-zinc-600 dark:text-zinc-400 text-justify hyphens-auto">
             <p>
-              I transform complex business requirements into high-performance, user-centric mobile products. With a deep focus on{" "}
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Kotlin</strong>,{" "}
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Jetpack Compose</strong>, and{" "}
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Clean Architecture</strong>, I build mobile ecosystems designed for scale and maintainability.
+              I transform complex business requirements into high-performance,
+              user-centric mobile products. With a deep focus on{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Kotlin
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Jetpack Compose
+              </strong>
+              , and{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Clean Architecture
+              </strong>
+              , I build mobile ecosystems designed for scale and
+              maintainability.
             </p>
-
 
             <ul className="list-disc pl-5 space-y-1">
               <li>
@@ -75,7 +84,11 @@ export default function Home() {
                 >
                   Synapses
                 </Link>
-                , spearheading the <strong className="font-semibold text-zinc-900 dark:text-zinc-100">BlueGPS</strong> platform (RTLS)
+                , spearheading the{" "}
+                <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                  BlueGPS
+                </strong>{" "}
+                platform (RTLS)
               </li>
               <li>
                 Freelance developer for startups like{" "}
@@ -106,7 +119,8 @@ export default function Home() {
                 </Link>
               </li>
               <li>
-                Computer Science teacher for ~7 years before full-time mobile development
+                Computer Science teacher for ~7 years before full-time mobile
+                development
               </li>
               <li>Graduated from University of Catania</li>
               <li>Grew up in Sicily, Italy</li>
@@ -120,13 +134,25 @@ export default function Home() {
           </h2>
           <div className="flex flex-col gap-4">
             <Link
+              href="https://viametric.app?ref=davideagostini.com"
+              className="group flex flex-wrap items-baseline gap-2 text-sm text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
+            >
+              <Pin className="w-3.5 h-3.5 fill-red-500 text-red-500" />
+              <span className="font-medium">ViaMetric</span>
+              <span className="text-zinc-500 dark:text-zinc-500 font-normal">
+                (Understand your Traffic & Optimize for AI Search)
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 opacity-50 -ml-1 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
               href="https://github.com/davideagostini/translate-ai-extension"
               className="group flex flex-wrap items-baseline gap-2 text-sm text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
             >
               <Pin className="w-3.5 h-3.5 fill-red-500 text-red-500" />
               <span className="font-medium">Translate AI</span>
               <span className="text-zinc-500 dark:text-zinc-500 font-normal">
-                (Chrome extension for translating and summarizing selected text with Gemini AI)
+                (Chrome extension for translating and summarizing selected text
+                with Gemini AI)
               </span>
               <ArrowRight className="w-3.5 h-3.5 opacity-50 -ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>

@@ -64,14 +64,14 @@ export default function RootLayout({
       "https://github.com/davideagostini",
       "https://davideagostini.medium.com/",
     ],
-    jobTitle: "Software Engineer",
+    jobTitle: "Android Engineer",
     worksFor: {
       "@type": "Organization",
       name: "Synapses",
     },
     image: "https://davideagostini.com/assets/profile.jpg",
     description:
-      "Software Engineer living in Italy. Specializing in Android and Flutter development.",
+      "Mobile Specialist Engineer living in Italy. Specializing in Android and Flutter development.",
   };
 
   return (
