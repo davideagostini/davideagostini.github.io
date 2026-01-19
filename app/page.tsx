@@ -1,186 +1,163 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, ArrowRight, Pin } from "lucide-react";
+import { Github, Linkedin, Twitter, ArrowUpRight, Pin } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans selection:bg-zinc-100 dark:selection:bg-zinc-800">
-      <div className="max-w-2xl mx-auto px-3 py-12 sm:py-16">
-        <header className="mb-16 flex flex-col sm:flex-row items-start sm:items-center gap-8">
-          <Image
-            src="/assets/profile.jpg"
-            width={88}
-            height={88}
-            alt="Davide Agostini"
-            className="rounded-full ring-2 ring-zinc-100 dark:ring-zinc-800 object-cover"
-            priority
-          />
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl text-zinc-900 dark:text-white">
-              Davide Agostini
-            </h1>
-            <p className="mt-3 text-base font-medium text-zinc-600 dark:text-zinc-400">
-              Software Engineer / Mobile Specialist
-            </p>
-            <div className="mt-5 flex gap-5">
-              <Link
-                href="https://twitter.com/davideagostini"
-                target="_blank"
-                className="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/davideagostini/"
-                target="_blank"
-                className="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </Link>
-              <Link
-                href="https://github.com/davideagostini"
-                target="_blank"
-                className="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </Link>
+    <main className="min-h-screen p-6 md:p-12 lg:p-16">
+      <div className="max-w-[680px] mx-auto">
+        <header className="mb-16">
+          <div className="mb-8 text-xs font-bold uppercase tracking-widest text-zinc-500">
+            Rev. 1.0
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-start gap-8 mb-8">
+            <div className="relative shrink-0">
+              <Image
+                src="/assets/profile.jpg"
+                width={140}
+                height={140}
+                alt="Davide Agostini"
+                className="border-2 border-zinc-900 object-cover"
+                priority
+              />
+              <div className="absolute -bottom-2 -right-2 w-full h-full bg-zinc-900 -z-10"></div>
             </div>
+
+            <div className="flex-1">
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter text-zinc-900 mb-4">
+                DAVIDE<br />AGOSTINI
+              </h1>
+              <p className="text-md font-medium uppercase text-zinc-600 mb-6 max-w-md">
+                Android Software Engineer<br />Mobile Specialist
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <SocialLink href="https://twitter.com/davideagostini" icon={<Twitter className="w-4 h-4" />} label="TWITTER" />
+            <SocialLink href="https://www.linkedin.com/in/davideagostini/" icon={<Linkedin className="w-4 h-4" />} label="LINKEDIN" />
+            <SocialLink href="https://github.com/davideagostini" icon={<Github className="w-4 h-4" />} label="GITHUB" />
           </div>
         </header>
 
-        <section id="about" className="mb-12">
-          <h2 className="text-xl font-semibold mb-8 text-zinc-900 dark:text-zinc-100">
-            Some things about me
+        <div className="border-t-2 border-zinc-900 my-12"></div>
+
+        <section id="about" className="mb-16">
+          <h2 className="text-sm font-bold uppercase tracking-widest bg-zinc-900 text-[#F5F5F0] inline-block px-2 py-1 mb-8">
+            01. About
           </h2>
-          <article className="prose prose-zinc dark:prose-invert leading-normal space-y-4 text-zinc-600 dark:text-zinc-400 text-justify hyphens-auto">
+          <div className="space-y-6 text-zinc-800 leading-relaxed font-normal">
             <p>
               I transform complex business requirements into high-performance,
               user-centric mobile products. With a deep focus on{" "}
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Kotlin
-              </strong>
-              ,{" "}
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Jetpack Compose
-              </strong>
-              , and{" "}
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Clean Architecture
-              </strong>
-              , I build mobile ecosystems designed for scale and
-              maintainability.
+              <strong className="font-bold bg-yellow-200 px-1 text-zinc-900">Kotlin</strong>,{" "}
+              <strong className="font-bold bg-yellow-200 px-1 text-zinc-900">Jetpack Compose</strong>, and{" "}
+              <strong className="font-bold bg-yellow-200 px-1 text-zinc-900">Clean Architecture</strong>,
+              I build mobile ecosystems designed for scale and maintainability.
             </p>
 
-            <ul className="list-disc pl-5 space-y-1">
-              <li>
-                Lead Android Engineer at{" "}
-                <Link
-                  href="https://www.synapseslab.com/"
-                  target="_blank"
-                  className="font-medium text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 underline decoration-zinc-400/50 hover:decoration-zinc-500 transition-colors"
-                >
-                  Synapses
-                </Link>
-                , spearheading the{" "}
-                <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
-                  BlueGPS
-                </strong>{" "}
-                platform (RTLS)
-              </li>
-              <li>
-                Freelance developer for startups like{" "}
-                <Link
-                  href="https://www.foodys.it/"
-                  target="_blank"
-                  className="font-medium text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 underline decoration-zinc-400/50 hover:decoration-zinc-500 transition-colors"
-                >
-                  Prestofood
-                </Link>
-                , Arm23, and{" "}
-                <Link
-                  href="https://redraion.com/"
-                  target="_blank"
-                  className="font-medium text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 underline decoration-zinc-400/50 hover:decoration-zinc-500 transition-colors"
-                >
-                  Red Raion
-                </Link>
-              </li>
-              <li>
-                Consultant for the{" "}
-                <Link
-                  href="https://www.unict.it/"
-                  target="_blank"
-                  className="font-medium text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 underline decoration-zinc-400/50 hover:decoration-zinc-500 transition-colors"
-                >
-                  University of Catania
-                </Link>
-              </li>
-              <li>
-                Computer Science teacher for ~7 years before full-time mobile
-                development
-              </li>
-              <li>Graduated from University of Catania</li>
-              <li>Grew up in Sicily, Italy</li>
+            <ul className="space-y-3 list-none pl-0">
+              <ListItem>
+                Lead Android Engineer at <Link href="https://www.synapseslab.com/" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Synapses</Link>, spearheading the BlueGPS platform.
+              </ListItem>
+              <ListItem>
+                Freelance developer for <Link href="https://www.foodys.it/" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Prestofood</Link>, Arm23, and <Link href="https://redraion.com/" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Red Raion</Link>.
+              </ListItem>
+              <ListItem>
+                Consultant for the University of Catania.
+              </ListItem>
+              <ListItem>
+                Computer Science teacher for ~7 years before full-time mobile development.
+              </ListItem>
+              <ListItem>
+                Graduated from University of Catania.
+              </ListItem>
+              <ListItem>
+                Grew up in Sicily, Italy.
+              </ListItem>
             </ul>
-          </article>
-        </section>
-
-        <section id="projects" className="mb-12">
-          <h2 className="text-xl font-semibold mb-8 text-zinc-900 dark:text-zinc-100">
-            things i&apos;m working on // things i&apos;ve built
-          </h2>
-          <div className="flex flex-col gap-4">
-            <Link
-              href="https://viametric.app?ref=davideagostini.com"
-              className="group flex flex-wrap items-baseline gap-2 text-sm text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
-            >
-              <Pin className="w-3.5 h-3.5 fill-red-500 text-red-500" />
-              <span className="font-medium">ViaMetric</span>
-              <span className="text-zinc-500 dark:text-zinc-500 font-normal">
-                (Understand your Traffic & Optimize for AI Search)
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 opacity-50 -ml-1 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="https://github.com/davideagostini/translate-ai-extension"
-              className="group flex flex-wrap items-baseline gap-2 text-sm text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
-            >
-              <Pin className="w-3.5 h-3.5 fill-red-500 text-red-500" />
-              <span className="font-medium">Translate AI</span>
-              <span className="text-zinc-500 dark:text-zinc-500 font-normal">
-                (Chrome extension for translating and summarizing selected text
-                with Gemini AI)
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 opacity-50 -ml-1 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="https://github.com/davideagostini/notyze"
-              className="group flex flex-wrap items-baseline gap-2 text-sm text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
-            >
-              <Pin className="w-3.5 h-3.5 fill-red-500 text-red-500" />
-              <span className="font-medium">Notyze</span>
-              <span className="text-zinc-500 dark:text-zinc-500 font-normal">
-                (Note-taking backend built with Ktor and MongoDB)
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 opacity-50 -ml-1 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="https://github.com/davideagostini/tintracker"
-              className="group flex flex-wrap items-baseline gap-2 text-sm text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
-            >
-              <Pin className="w-3.5 h-3.5 fill-red-500 text-red-500" />
-              <span className="font-medium">Tintracker</span>
-              <span className="text-zinc-500 dark:text-zinc-500 font-normal">
-                (Mobile app for tracking activities and calculating earnings)
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 opacity-50 -ml-1 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
         </section>
+
+        <section id="projects" className="mb-16">
+          <h2 className="text-sm font-bold uppercase tracking-widest bg-zinc-900 text-[#F5F5F0] inline-block px-2 py-1 mb-8">
+            02. Projects
+          </h2>
+
+          <div className="grid grid-cols-1 gap-4">
+            <ProjectCard
+              title="ViaMetric"
+              desc="Understand your Traffic & Optimize for AI Search"
+              href="https://viametric.app?ref=davideagostini.com"
+              starred
+            />
+            <ProjectCard
+              title="Translate AI"
+              desc="Chrome extension for translating and summarizing text"
+              href="https://github.com/davideagostini/translate-ai-extension"
+            />
+            <ProjectCard
+              title="Notyze"
+              desc="Note-taking backend built with Ktor and MongoDB"
+              href="https://github.com/davideagostini/notyze"
+            />
+            <ProjectCard
+              title="Tintracker"
+              desc="Mobile app for tracking activities and earnings"
+              href="https://github.com/davideagostini/tintracker"
+            />
+          </div>
+        </section>
+
+        <footer className="text-xs text-zinc-500 font-mono border-t border-zinc-300 pt-8 flex justify-between uppercase">
+          <div>© {new Date().getFullYear()} Davide Agostini</div>
+          <div>Sicily, Italy</div>
+        </footer>
       </div>
     </main>
+  );
+}
+
+function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      className="flex items-center gap-2 px-4 py-2 border border-zinc-900 bg-white hover:bg-zinc-900 hover:text-white transition-all text-xs font-bold uppercase"
+    >
+      {icon}
+      <span>{label}</span>
+    </Link>
+  );
+}
+
+function ListItem({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex items-start gap-3">
+      <span className="text-zinc-400 mt-1">::</span>
+      <span>{children}</span>
+    </li>
+  );
+}
+
+function ProjectCard({ title, desc, href, starred = false }: { title: string; desc: string; href: string; starred?: boolean }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      className="group block border-2 border-zinc-900 p-5 bg-white hover:-translate-y-1 hover:translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] transition-all"
+    >
+      <div className="flex justify-between items-start mb-2">
+        <div className="flex items-center gap-2">
+          {starred && <Pin className="w-4 h-4 text-orange-500 fill-orange-500" />}
+          <h3 className="font-bold text-lg bg-zinc-100 px-1 group-hover:bg-zinc-900 group-hover:text-white transition-colors inline-block">
+            {title}
+          </h3>
+        </div>
+        <ArrowUpRight className="w-5 h-5 text-zinc-400 group-hover:text-zinc-900 transition-colors" />
+      </div>
+      <p className="text-zinc-600 text-sm">{desc}</p>
+    </Link>
   );
 }
