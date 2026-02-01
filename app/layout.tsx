@@ -9,17 +9,18 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://davideagostini.com"),
-  title: "Davide Agostini - Software Engineer",
+  title: "Davide Agostini | Android Engineer & GEO Specialist",
   description:
-    "Davide Agostini - Software Engineer living in Italy, specializing in Mobile Development (Android/Kotlin, Flutter/Dart).",
+    "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and Generative Engine Optimization (GEO).",
   keywords: [
     "Davide Agostini",
     "Software Engineer",
     "Mobile Developer",
     "Android",
     "Kotlin",
-    "Flutter",
-    "Dart",
+    "Generative Engine Optimization",
+    "GEO",
+    "AI Search Analytics",
     "Italy",
   ],
   authors: [{ name: "Davide Agostini", url: "https://davideagostini.com" }],
@@ -28,9 +29,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://davideagostini.com",
-    title: "Davide Agostini - Software Engineer",
+    title: "Davide Agostini | Android Engineer & GEO Specialist",
     description:
-      "Davide Agostini - Software Engineer living in Italy, specializing in Mobile Development.",
+      "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and GEO.",
     siteName: "Davide Agostini",
     images: [
       {
@@ -43,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Davide Agostini - Software Engineer",
+    title: "Davide Agostini | Android Engineer & GEO Specialist",
     description:
-      "Software Engineer living in Italy, specializing in Mobile Development.",
+      "Lead Android Engineer and founder of ViaMetric. Specialist in GEO.",
     creator: "@davideagostini",
     images: ["/assets/profile.jpg"],
   },
@@ -56,40 +57,53 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Davide Agostini",
-    url: "https://davideagostini.com",
-    sameAs: [
-      "https://twitter.com/davideagostini",
-      "https://www.linkedin.com/in/davideagostini/",
-      "https://github.com/davideagostini",
-      "https://davideagostini.medium.com/",
-    ],
-    jobTitle: "Android Engineer & Founder",
-    worksFor: [
-      {
-        "@type": "Organization",
-        name: "Synapses",
-      },
-      {
-        "@type": "Organization",
-        name: "ViaMetric",
-        url: "https://viametric.app"
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Davide Agostini",
+      url: "https://davideagostini.com",
+      sameAs: [
+        "https://twitter.com/davideagostini",
+        "https://www.linkedin.com/in/davideagostini/",
+        "https://github.com/davideagostini",
+        "https://davideagostini.medium.com/",
+      ],
+      jobTitle: "Android Engineer & Founder",
+      worksFor: [
+        {
+          "@type": "Organization",
+          name: "Synapses",
+        },
+        {
+          "@type": "Organization",
+          name: "ViaMetric",
+          url: "https://viametric.app"
+        }
+      ],
+      knowsAbout: [
+        "Mobile Development",
+        "Android",
+        "Kotlin",
+        "Generative Engine Optimization",
+        "AI Search Analytics"
+      ],
+      image: "https://davideagostini.com/assets/profile.jpg",
+      description:
+        "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and Generative Engine Optimization (GEO).",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Davide Agostini",
+      "url": "https://davideagostini.com",
+      "description": "Portfolio of Davide Agostini, Lead Android Engineer & GEO Specialist.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Davide Agostini"
       }
-    ],
-    knowsAbout: [
-      "Mobile Development",
-      "Android",
-      "Kotlin",
-      "Generative Engine Optimization",
-      "AI Search Analytics"
-    ],
-    image: "https://davideagostini.com/assets/profile.jpg",
-    description:
-      "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and Generative Engine Optimization (GEO).",
-  };
+    }
+  ];
 
   return (
     <html lang="en">

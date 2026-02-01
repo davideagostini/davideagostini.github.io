@@ -35,9 +35,9 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <SocialLink href="https://twitter.com/davideagostini" icon={<Twitter className="w-4 h-4" />} label="TWITTER" />
-            <SocialLink href="https://www.linkedin.com/in/davideagostini/" icon={<Linkedin className="w-4 h-4" />} label="LINKEDIN" />
-            <SocialLink href="https://github.com/davideagostini" icon={<Github className="w-4 h-4" />} label="GITHUB" />
+            <SocialLink href="https://twitter.com/davideagostini" icon={<Twitter className="w-4 h-4" />} label="TWITTER" ariaLabel="Follow Davide Agostini on Twitter" />
+            <SocialLink href="https://www.linkedin.com/in/davideagostini/" icon={<Linkedin className="w-4 h-4" />} label="LINKEDIN" ariaLabel="Connect with Davide Agostini on LinkedIn" />
+            <SocialLink href="https://github.com/davideagostini" icon={<Github className="w-4 h-4" />} label="GITHUB" ariaLabel="View Davide Agostini's projects on GitHub" />
           </div>
         </header>
 
@@ -142,11 +142,12 @@ export default function Home() {
   );
 }
 
-function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+function SocialLink({ href, icon, label, ariaLabel }: { href: string; icon: React.ReactNode; label: string; ariaLabel: string }) {
   return (
     <Link
       href={href}
       target="_blank"
+      aria-label={ariaLabel}
       className="flex items-center gap-2 px-4 py-2 border border-zinc-900 bg-white hover:bg-zinc-900 hover:text-white transition-all text-xs font-bold uppercase"
     >
       {icon}
