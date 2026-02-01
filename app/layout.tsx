@@ -67,14 +67,28 @@ export default function RootLayout({
       "https://github.com/davideagostini",
       "https://davideagostini.medium.com/",
     ],
-    jobTitle: "Android Engineer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Synapses",
-    },
+    jobTitle: "Android Engineer & Founder",
+    worksFor: [
+      {
+        "@type": "Organization",
+        name: "Synapses",
+      },
+      {
+        "@type": "Organization",
+        name: "ViaMetric",
+        url: "https://viametric.app"
+      }
+    ],
+    knowsAbout: [
+      "Mobile Development",
+      "Android",
+      "Kotlin",
+      "Generative Engine Optimization",
+      "AI Search Analytics"
+    ],
     image: "https://davideagostini.com/assets/profile.jpg",
     description:
-      "Mobile Specialist Engineer living in Italy. Specializing in Android and Flutter development.",
+      "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and Generative Engine Optimization (GEO).",
   };
 
   return (

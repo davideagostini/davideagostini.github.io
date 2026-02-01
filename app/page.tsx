@@ -57,6 +57,10 @@ export default function Home() {
               I build mobile ecosystems designed for scale and maintainability.
             </p>
 
+            <p>
+              Beyond mobile, I am currently exploring the intersection of AI and technical SEO. As the founder of <Link href="https://viametric.app" className="underline font-bold hover:bg-zinc-900 hover:text-white transition-colors">ViaMetric</Link>, I help companies optimize their visibility for the AI Search era using our <Link href="https://viametric.app/tools/ai-visibility-checker" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Free AI Visibility Checker</Link>.
+            </p>
+
             <ul className="space-y-3 list-none pl-0">
               <ListItem>
                 Lead Android Engineer at <Link href="https://www.synapseslab.com/" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Synapses</Link>, spearheading the BlueGPS platform.
@@ -77,6 +81,25 @@ export default function Home() {
                 Grew up in Sicily, Italy.
               </ListItem>
             </ul>
+          </div>
+        </section>
+
+        <section id="focus" className="mb-16">
+          <h2 className="text-sm font-bold uppercase tracking-widest bg-indigo-600 text-white inline-block px-2 py-1 mb-8">
+            Current Focus
+          </h2>
+          <div className="border-2 border-indigo-600 p-6 bg-indigo-50/50">
+            <h3 className="text-xl font-bold text-indigo-900 mb-2">ViaMetric: The SEO for the AI Era</h3>
+            <p className="text-indigo-800/80 mb-4">
+              I'm building an analytics platform designed to track how ChatGPT, Perplexity, and Gemini are citing your brand. Stop being invisible to the bots that decide your brand's authority.
+            </p>
+            <Link 
+              href="https://viametric.app?ref=davideagostini.com" 
+              target="_blank"
+              className="inline-flex items-center font-bold text-indigo-600 hover:text-indigo-700 transition-colors"
+            >
+              Analyze your AI Visibility <ArrowUpRight className="ml-1 w-4 h-4" />
+            </Link>
           </div>
         </section>
 
