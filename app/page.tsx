@@ -17,7 +17,7 @@ export default function Home() {
                 src="/assets/profile.jpg"
                 width={140}
                 height={140}
-                alt="Davide Agostini"
+                alt="Davide Agostini - Android Software Engineer & GEO Specialist"
                 className="border-2 border-zinc-900 object-cover"
                 priority
               />
@@ -39,6 +39,11 @@ export default function Home() {
             <SocialLink href="https://www.linkedin.com/in/davideagostini/" icon={<Linkedin className="w-4 h-4" />} label="LINKEDIN" ariaLabel="Connect with Davide Agostini on LinkedIn" />
             <SocialLink href="https://github.com/davideagostini" icon={<Github className="w-4 h-4" />} label="GITHUB" ariaLabel="View Davide Agostini's projects on GitHub" />
           </div>
+
+          <p className="mt-8 text-xs font-bold text-zinc-500 uppercase tracking-widest flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Building in public for 1,500+ followers on X
+          </p>
         </header>
 
         <div className="border-t-2 border-zinc-900 my-12"></div>
@@ -84,9 +89,23 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="expertise" className="mb-16">
+          <h2 className="text-sm font-bold uppercase tracking-widest bg-zinc-900 text-[#F5F5F0] inline-block px-2 py-1 mb-8">
+            02. Expertise
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <SkillBadge label="Android (Kotlin)" />
+            <SkillBadge label="Jetpack Compose" />
+            <SkillBadge label="Clean Architecture" />
+            <SkillBadge label="AI Search (GEO)" />
+            <SkillBadge label="Technical SEO" />
+            <SkillBadge label="SaaS Strategy" />
+          </div>
+        </section>
+
         <section id="focus" className="mb-16">
           <h2 className="text-sm font-bold uppercase tracking-widest bg-indigo-600 text-white inline-block px-2 py-1 mb-8">
-            Current Focus
+            03. Current Focus
           </h2>
           <div className="border-2 border-indigo-600 p-6 bg-indigo-50/50">
             <h3 className="text-xl font-bold text-indigo-900 mb-2">ViaMetric: The SEO for the AI Era</h3>
@@ -105,7 +124,7 @@ export default function Home() {
 
         <section id="projects" className="mb-16">
           <h2 className="text-sm font-bold uppercase tracking-widest bg-zinc-900 text-[#F5F5F0] inline-block px-2 py-1 mb-8">
-            02. Projects
+            04. Projects
           </h2>
 
           <div className="grid grid-cols-1 gap-4">
@@ -129,6 +148,26 @@ export default function Home() {
               title="Tintracker"
               desc="Mobile app for tracking activities and earnings"
               href="https://github.com/davideagostini/tintracker"
+            />
+          </div>
+        </section>
+
+        <section id="writing" className="mb-16">
+          <h2 className="text-sm font-bold uppercase tracking-widest bg-zinc-900 text-[#F5F5F0] inline-block px-2 py-1 mb-8">
+            05. Featured Writing
+          </h2>
+          <div className="space-y-4">
+            <WritingLink 
+              title="What is GEO? The Definitive Guide to AI Search" 
+              href="https://viametric.app/blog/what-is-geo" 
+            />
+            <WritingLink 
+              title="The Scraper Paradox: Detecting Headless AI Bots" 
+              href="https://viametric.app/blog/is-your-waf-blocking-ai" 
+            />
+            <WritingLink 
+              title="Why Citations are the New Backlinks" 
+              href="https://viametric.app/blog/aeo-vs-seo-citations" 
             />
           </div>
         </section>
@@ -182,6 +221,29 @@ function ProjectCard({ title, desc, href, starred = false }: { title: string; de
         <ArrowUpRight className="w-5 h-5 text-zinc-400 group-hover:text-zinc-900 transition-colors" />
       </div>
       <p className="text-zinc-600 text-sm">{desc}</p>
+    </Link>
+  );
+}
+
+function SkillBadge({ label }: { label: string }) {
+  return (
+    <div className="px-3 py-2 border border-zinc-200 bg-zinc-50 text-xs font-bold text-zinc-600 uppercase tracking-tight text-center hover:border-zinc-900 transition-colors">
+      {label}
+    </div>
+  );
+}
+
+function WritingLink({ title, href }: { title: string; href: string }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      className="flex items-center justify-between group p-4 border border-zinc-200 hover:border-zinc-900 transition-colors bg-white shadow-sm"
+    >
+      <span className="text-sm font-bold text-zinc-800 group-hover:text-zinc-900 underline decoration-zinc-200 group-hover:decoration-zinc-900 transition-all">
+        {title}
+      </span>
+      <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-900 transition-colors" />
     </Link>
   );
 }
