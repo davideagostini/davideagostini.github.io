@@ -30,3 +30,38 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Syntax Highlighting overrides */
+.prose pre {
+  background-color: #22272e !important; /* GitHub Dark Dimmed background */
+  padding: 0;
+  margin: 1.5em 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #373e47;
+}
+
+.prose pre > code {
+  display: grid;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background-color: transparent !important;
+  color: inherit;
+}
+
+/* Inline code style */
+.prose :not(pre) > code {
+  background-color: #e5e5e5;
+  color: #c7254e; /* Or a nice accent color */
+  color: #1a1a1a;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
