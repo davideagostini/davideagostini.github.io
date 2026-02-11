@@ -1,17 +1,66 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Twitter } from "lucide-react";
 import { getSortedPostsData } from "@/lib/posts";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Android Engineering Notes | Davide Agostini",
-  description: "Daily insights on Jetpack Compose, Android Performance, and Security.",
+  description: "Daily insights on Jetpack Compose, Android Performance, and Security by Davide Agostini.",
+  openGraph: {
+    title: "Android Engineering Notes | Davide Agostini",
+    description: "Short, actionable technical notes on building production-grade Android apps. Focus: Compose, Performance, Security.",
+    url: "https://davideagostini.com/android",
+    type: "website",
+    siteName: "Davide Agostini",
+    images: [{
+      url: "/assets/profile.jpg", // Ideally custom OG image for notes section
+      width: 800,
+      height: 800,
+      alt: "Android Engineering Notes"
+    }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Android Engineering Notes | Davide Agostini",
+    description: "Daily insights on Jetpack Compose, Android Performance, and Security.",
+    creator: "@davideagostini",
+    images: ["/assets/profile.jpg"]
+  }
 };
 
 export default function AndroidNotes() {
   const posts = getSortedPostsData();
+  
+  // Create JSON-LD for CollectionPage
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Android Engineering Notes",
+    "description": "A collection of technical notes on Android development, security, and performance.",
+    "url": "https://davideagostini.com/android",
+    "author": {
+      "@type": "Person",
+      "name": "Davide Agostini",
+      "url": "https://davideagostini.com"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": posts.map((post, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `https://davideagostini.com/android/${post.id}`,
+        "name": post.title
+      }))
+    }
+  };
 
   return (
     <main className="min-h-screen p-6 md:p-12 lg:p-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
       <div className="max-w-[680px] mx-auto">
         <header className="mb-12">
           <Link href="/" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-zinc-900 mb-8 transition-colors">

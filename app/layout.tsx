@@ -9,18 +9,20 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://davideagostini.com"),
-  title: "Davide Agostini | Android Engineer & GEO Specialist",
+  title: "Davide Agostini | Android Security & Performance Engineer",
   description:
-    "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and Generative Engine Optimization (GEO).",
+    "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose Architecture. Founder of ViaMetric.",
   keywords: [
     "Davide Agostini",
-    "Software Engineer",
-    "Mobile Developer",
-    "Android",
+    "Android Engineer",
+    "Mobile Security",
+    "StrongBox",
+    "TEE",
+    "Jetpack Compose",
+    "Performance Optimization",
     "Kotlin",
-    "Generative Engine Optimization",
-    "GEO",
-    "AI Search Analytics",
+    "System Design",
+    "Offline-First",
     "Italy",
   ],
   authors: [{ name: "Davide Agostini", url: "https://davideagostini.com" }],
@@ -29,24 +31,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://davideagostini.com",
-    title: "Davide Agostini | Android Engineer & GEO Specialist",
+    title: "Davide Agostini | Android Security & Performance Engineer",
     description:
-      "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and GEO.",
+      "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose Architecture.",
     siteName: "Davide Agostini",
     images: [
       {
         url: "/assets/profile.jpg",
         width: 800,
         height: 800,
-        alt: "Davide Agostini",
+        alt: "Davide Agostini - Android Security Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Davide Agostini | Android Engineer & GEO Specialist",
+    title: "Davide Agostini | Android Security & Performance Engineer",
     description:
-      "Lead Android Engineer and founder of ViaMetric. Specialist in GEO.",
+      "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose.",
     creator: "@davideagostini",
     images: ["/assets/profile.jpg"],
   },
@@ -69,7 +71,7 @@ export default function RootLayout({
         "https://github.com/davideagostini",
         "https://davideagostini.medium.com/",
       ],
-      jobTitle: "Android Engineer & Founder",
+      jobTitle: "Senior Android Engineer",
       worksFor: [
         {
           "@type": "Organization",
@@ -82,22 +84,24 @@ export default function RootLayout({
         }
       ],
       knowsAbout: [
-        "Mobile Development",
-        "Android",
-        "Kotlin",
-        "Generative Engine Optimization",
-        "AI Search Analytics"
+        "Android Security",
+        "StrongBox Keymaster",
+        "Trusted Execution Environment (TEE)",
+        "Jetpack Compose Internals",
+        "Kotlin Multiplatform",
+        "System Design",
+        "AI Search Visibility"
       ],
       image: "https://davideagostini.com/assets/profile.jpg",
       description:
-        "Lead Android Engineer and founder of ViaMetric. Specialist in Mobile ecosystems and Generative Engine Optimization (GEO).",
+        "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose Architecture.",
     },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Davide Agostini",
       "url": "https://davideagostini.com",
-      "description": "Portfolio of Davide Agostini, Lead Android Engineer & GEO Specialist.",
+      "description": "Engineering notes and portfolio of Davide Agostini, Android Security & Performance Specialist.",
       "publisher": {
         "@type": "Person",
         "name": "Davide Agostini"

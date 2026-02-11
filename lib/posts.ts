@@ -15,7 +15,12 @@ export function getSortedPostsData() {
   }
   
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+  // Filter out non-markdown files and files starting with underscore (templates/drafts)
+  const filteredFileNames = fileNames.filter(fileName => 
+    fileName.endsWith('.md') && !fileName.startsWith('_')
+  );
+
+  const allPostsData = filteredFileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -41,7 +46,11 @@ export function getAllPostIds() {
     return [];
   }
   const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => {
+  const filteredFileNames = fileNames.filter(fileName => 
+    fileName.endsWith('.md') && !fileName.startsWith('_')
+  );
+
+  return filteredFileNames.map((fileName) => {
     return {
       params: {
         slug: fileName.replace(/\.md$/, ''),
