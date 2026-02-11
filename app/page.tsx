@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, ArrowUpRight, Pin, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Twitter, ArrowUpRight, Pin, ArrowRight, NotebookText } from "lucide-react";
 import { getSortedPostsData } from "@/lib/posts";
 
 export default function Home() {
@@ -78,7 +78,7 @@ export default function Home() {
 
           <div className="mt-8 p-4 border-2 border-zinc-900 bg-emerald-50 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-2 opacity-10">
-              <Github className="w-32 h-32" />
+              <NotebookText className="w-32 h-32" />
             </div>
             <p className="text-sm font-bold text-zinc-900 mb-2 uppercase tracking-wide relative z-10">
               Daily Engineering Notes
