@@ -11,18 +11,21 @@ In this note, I'll show you the most common leak pattern I see in production app
 
 ## The "Unstable Lambda" Trap
 
-One of the most insidious performance killers in Compose is passing unstable lambdas to composables. If a lambda is recreated on every recomposition, it breaks skipping.
+One of the most insidious performance killers in Compose is passing unstable lambdas to composables. If a lambda is recreated on every recomposition, it breaks **skipping** (Compose's ability to skip redrawing UI parts that haven't changed).
 
-### The Problem
+### The Problem: Recreating Lambdas
+
+In Kotlin, a lambda like `{ viewModel.doSomething() }` is an object. If it captures a variable that isn't considered "@Stable" by the compiler (like most ViewModels), Compose creates a **new instance** of that lambda every time the parent function recomposes.
 
 ```kotlin
 @Composable
 fun UserList(users: List<User>, viewModel: UserViewModel) {
-    // ❌ BAD: This lambda is recreated every time UserList recomposes.
-    // Because it captures 'viewModel', the compiler treats it as unstable
-    // unless the ViewModel itself is stable (which it usually isn't by default).
     LazyColumn {
         items(users) { user ->
+            // ❌ BAD: Performance Killer
+            // This lambda object is recreated every time 'UserList' recomposes.
+            // As a result, 'UserItem' sees a "new" onClick parameter every time.
+            // This forces 'UserItem' to recompose, even if the 'user' data hasn't changed!
             UserItem(
                 user = user,
                 onClick = { viewModel.onUserClicked(user) } 
@@ -32,14 +35,20 @@ fun UserList(users: List<User>, viewModel: UserViewModel) {
 }
 ```
 
-Even if `UserItem` is marked with `@Stable` or uses `skipping`, it will still recompose because its `onClick` parameter has changed.
+Even if `UserItem` is marked with `@Stable` or uses `skipping`, it **will still recompose** because its `onClick` parameter has changed. In a list of 100 items, this causes massive jank during scrolling.
 
 ### The Fix: Method References or Remembered Lambdas
+
+We need to tell Compose: "This function doesn't change."
+
+**Option 1: Remember the Lambda**
+Wrap the lambda in `remember`. This tells Compose to reuse the same lambda instance across recompositions unless `viewModel` changes (which it implies it won't).
 
 ```kotlin
 @Composable
 fun UserList(users: List<User>, viewModel: UserViewModel) {
-    // ✅ OPTION 1: Remember the lambda
+    // ✅ GOOD: We create the lambda ONCE and reuse it.
+    // Compose knows this object hasn't changed, so it can skip recomposing the children.
     val onUserClick = remember(viewModel) {
         { user: User -> viewModel.onUserClicked(user) }
     }
@@ -55,29 +64,57 @@ fun UserList(users: List<User>, viewModel: UserViewModel) {
 }
 ```
 
-Or better yet, pass a method reference if possible:
+**Option 2: Method Reference (Cleaner)**
+If your function signature matches exactly, you can use a method reference. These are often treated as stable by the compiler.
 
 ```kotlin
-// ✅ OPTION 2: Method Reference (cleaner)
+// ✅ BEST: Clean and performant
 UserItem(
     user = user,
     onClick = viewModel::onUserClicked
 )
 ```
 
-## Holding Context in `remember`
+## The Context Leak: Ignoring Lifecycle
 
-Another common leak source is capturing an `Activity` or `View` context inside a `remember` block that outlives the composition.
+Another common leak source is capturing an `Activity` or `View` context inside a `remember` block that outlives the composition. This happens frequently when integrating legacy SDKs or Sensor listeners.
 
 ```kotlin
-// ❌ RISKY: If this composable is used in a context that outlives the Activity 
-// (e.g., a retained fragment or a navigation scope not cleared properly),
-// you might leak the Activity context.
-val context = LocalContext.current
-val heavyObject = remember { HeavyObject(context) }
+@Composable
+fun SensorDisplay() {
+    val context = LocalContext.current
+    
+    // ❌ DANGEROUS: 
+    // If 'SensorHelper' registers a listener on the Context (Activity) 
+    // and never unregisters it, the Activity will leak when you navigate away.
+    // 'remember' does NOT automatically clean up resources!
+    val sensorHelper = remember { SensorHelper(context) }
+    
+    Text("Sensor data: ${sensorHelper.data}")
+}
 ```
 
-**Fix:** Use `DisposableEffect` to clean up resources, or ensure your remembered objects don't hold strong references to `Context` if they might outlive the UI lifecycle.
+### The Fix: DisposableEffect
+
+If an object needs to be cleaned up (like removing a listener), you **must** use `DisposableEffect`. This block runs when the composable leaves the screen.
+
+```kotlin
+@Composable
+fun SensorDisplay() {
+    val context = LocalContext.current
+    
+    // ✅ GOOD: manage the lifecycle explicitly
+    DisposableEffect(context) {
+        val helper = SensorHelper(context)
+        helper.startListening()
+        
+        // This block runs when the composable is removed from the UI tree
+        onDispose {
+            helper.stopListening() // Cleanup prevents the leak!
+        }
+    }
+}
+```
 
 ## How to Detect Leaks with LeakCanary
 
