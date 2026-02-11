@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Twitter } from "lucide-react";
+import { getSortedPostsData } from "@/lib/posts";
 
 export const metadata = {
   title: "Android Engineering Notes | Davide Agostini",
@@ -7,6 +8,8 @@ export const metadata = {
 };
 
 export default function AndroidNotes() {
+  const posts = getSortedPostsData();
+
   return (
     <main className="min-h-screen p-6 md:p-12 lg:p-16">
       <div className="max-w-[680px] mx-auto">
@@ -43,14 +46,17 @@ export default function AndroidNotes() {
           </div>
 
           <div className="space-y-6">
-            <NoteCard 
-              href="/android/compose-leak"
-              date="Feb 12, 2026"
-              title="Compose Performance: It's Probably a Leak"
-              tags={["Compose", "Performance"]}
-              desc="Why 'Compose is slow' is often just a lifecycle mismatch. How to use LeakCanary to find long-lived remember references."
-            />
-            {/* Future notes will be added here */}
+            {posts.map((post) => (
+              <NoteCard
+                key={post.id}
+                href={`/android/${post.id}`}
+                date={post.date}
+                title={post.title}
+                tags={post.tags}
+                desc={post.description}
+              />
+            ))}
+            {posts.length === 0 && <p className="text-zinc-500 text-sm">No notes found.</p>}
           </div>
         </section>
       </div>
