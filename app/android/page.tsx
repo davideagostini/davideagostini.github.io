@@ -44,6 +44,7 @@ export default function AndroidNotes() {
 
           <div className="space-y-6">
             <NoteCard 
+              href="/android/compose-leak"
               date="Feb 12, 2026"
               title="Compose Performance: It's Probably a Leak"
               tags={["Compose", "Performance"]}
@@ -57,9 +58,9 @@ export default function AndroidNotes() {
   );
 }
 
-function NoteCard({ title, date, tags, desc }: { title: string; date: string; tags: string[]; desc: string }) {
+function NoteCard({ title, date, tags, desc, href }: { title: string; date: string; tags: string[]; desc: string; href: string }) {
   return (
-    <article className="group block border border-zinc-200 p-5 bg-white hover:border-zinc-900 transition-all">
+    <Link href={href} className="group block border border-zinc-200 p-5 bg-white hover:border-zinc-900 transition-all">
       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2 gap-2">
         <h3 className="font-bold text-lg text-zinc-900 group-hover:underline decoration-2 underline-offset-2">
           {title}
@@ -78,6 +79,6 @@ function NoteCard({ title, date, tags, desc }: { title: string; date: string; ta
       <p className="text-zinc-600 text-sm leading-relaxed">
         {desc}
       </p>
-    </article>
+    </Link>
   );
 }
