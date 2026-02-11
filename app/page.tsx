@@ -117,7 +117,7 @@ export default function Home() {
                 Lead Android Engineer at <Link href="https://www.synapseslab.com/" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Synapses</Link>, architecting the BlueGPS indoor navigation platform.
               </ListItem>
               <ListItem>
-                Open Source contributor focusing on secure storage and biometric authentication wrappers.
+                Freelance developer for <Link href="https://www.foodys.it/" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Prestofood</Link>, Arm23, and <Link href="https://redraion.com/" className="underline hover:bg-zinc-900 hover:text-white transition-colors">Red Raion</Link>.
               </ListItem>
               <ListItem>
                 Computer Science educator for 7+ years, which drives my passion for writing detailed engineering notes.
