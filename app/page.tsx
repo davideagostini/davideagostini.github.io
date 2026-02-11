@@ -187,6 +187,12 @@ export default function Home() {
               href="https://github.com/davideagostini/translate-ai-extension"
               tag="AI"
             />
+            <ProjectCard
+              title="Tintracker"
+              desc="Mobile app for tracking activities and earnings. Built with Clean Architecture and Jetpack Compose."
+              href="https://github.com/davideagostini/tintracker"
+              tag="Android"
+            />
           </div>
         </section>
 
