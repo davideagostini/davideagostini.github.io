@@ -40,6 +40,30 @@ export default function Home() {
             <SocialLink href="https://github.com/davideagostini" icon={<Github className="w-4 h-4" />} label="GITHUB" ariaLabel="View Davide Agostini's projects on GitHub" />
           </div>
 
+          <div className="mt-8 p-4 border-2 border-zinc-900 bg-emerald-50">
+            <p className="text-sm font-bold text-zinc-900 mb-2 uppercase tracking-wide">
+              Daily Android Engineering Notes
+            </p>
+            <p className="text-sm text-zinc-700 mb-3">
+              One actionable takeaway on Compose, Performance, or Security every morning at 9AM CET.
+            </p>
+            <div className="flex gap-3">
+              <Link
+                href="https://twitter.com/davideagostini"
+                target="_blank"
+                className="inline-flex items-center text-xs font-bold bg-zinc-900 text-white px-3 py-1.5 hover:bg-zinc-700 transition-colors uppercase"
+              >
+                Follow on X
+              </Link>
+              <Link
+                href="/android"
+                className="inline-flex items-center text-xs font-bold border border-zinc-900 text-zinc-900 px-3 py-1.5 hover:bg-zinc-100 transition-colors uppercase"
+              >
+                Read latest notes
+              </Link>
+            </div>
+          </div>
+
           <p className="mt-8 text-xs font-bold text-zinc-500 uppercase tracking-widest flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             Building in public for 1,500+ followers on X
