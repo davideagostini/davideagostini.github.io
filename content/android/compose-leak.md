@@ -1,134 +1,124 @@
 ---
 title: "Compose Performance: It's Probably a Leak"
 date: "2026-02-12"
-description: "Why 'Compose is slow' is often just a lifecycle mismatch. How to use LeakCanary to find long-lived remember references."
-tags: ["Compose", "Performance"]
+description: "When 'Compose is slow' is actually GC jank: how to find and fix memory leaks with LeakCanary (and correct side-effect cleanup)."
+tags: ["Compose", "Performance", "Memory"]
 ---
 
-When developers say "Jetpack Compose is slow," 90% of the time they are experiencing jank caused by **unnecessary recompositions** or **memory leaks**. The other 10% is usually `LazyList` misuse.
+If someone tells you **“Compose is slow”**, don’t immediately start micro-optimizing modifiers.
 
-In this note, I'll show you the most common leak pattern I see in production apps and how to catch it.
+In many real apps, the jank is caused by **memory pressure**:
+- a leak keeps objects alive → heap grows
+- the app triggers more frequent / longer **GC pauses**
+- GC pauses show up as “random” frame drops → it *feels* like UI performance
 
-## The "Unstable Lambda" Trap
+This note is a practical checklist to **prove** the leak and fix the most common Compose-related causes.
 
-One of the most insidious performance killers in Compose is passing unstable lambdas to composables. If a lambda is recreated on every recomposition, it breaks **skipping** (Compose's ability to skip redrawing UI parts that haven't changed).
+> If your problem is *constant recomposition / skipping blockers* (especially in lists), read this sister note:
+> **Compose Performance: Skipping & Stability (User List Edition)** → `/android/compose-skipping-stability-user-list`
 
-### The Problem: Recreating Lambdas
+---
 
-In Kotlin, a lambda like `{ viewModel.doSomething() }` is an object. If it captures a variable that isn't considered "@Stable" by the compiler (like most ViewModels), Compose creates a **new instance** of that lambda every time the parent function recomposes.
+## 1) What a Compose-related leak looks like
+
+Symptoms you’ll typically see:
+- Scrolling is fine… then becomes janky after a few navigations
+- Navigating back doesn’t free the screen’s memory
+- The app “gets slower” over time
+
+In logs/traces you might notice:
+- increasing heap usage
+- frequent GC events (sometimes coinciding with dropped frames)
+
+## 2) Detecting leaks with LeakCanary (do this first)
+
+Don’t guess. Use **LeakCanary**.
+
+```gradle
+// app/build.gradle
+
+debugImplementation "com.squareup.leakcanary:leakcanary-android:2.14"
+```
+
+How to reproduce:
+1. Run a **debug** build
+2. Open the screen, interact a bit
+3. Navigate away (back)
+4. Repeat 2–3 times
+
+If LeakCanary reports that your `Activity`, `Fragment`, `View`, or a `Composition` is retained, you have proof.
+
+## 3) The classic leak: registering listeners without unregistering (Context capture)
+
+This happens when you `remember` an object that **registers something** (listener, callback, broadcast receiver, sensor, location, etc.)
 
 ```kotlin
 @Composable
-fun UserList(users: List<User>, viewModel: UserViewModel) {
-    LazyColumn {
-        items(users) { user ->
-            // ❌ BAD: Performance Killer
-            // This lambda object is recreated every time 'UserList' recomposes.
-            // As a result, 'UserItem' sees a "new" onClick parameter every time.
-            // This forces 'UserItem' to recompose, even if the 'user' data hasn't changed!
-            UserItem(
-                user = user,
-                onClick = { viewModel.onUserClicked(user) } 
-            )
-        }
-    }
+fun SensorScreen() {
+  val context = LocalContext.current
+
+  // ❌ BAD:
+  // - remember() keeps this instance for the lifetime of this composition
+  // - if SensorHelper registers listeners and you never unregister
+  //   your Activity can leak after you navigate away
+  val helper = remember { SensorHelper(context) }
+
+  Text("Value: ${helper.latestValue}")
 }
 ```
 
-Even if `UserItem` is marked with `@Stable` or uses `skipping`, it **will still recompose** because its `onClick` parameter has changed. In a list of 100 items, this causes massive jank during scrolling.
+### Fix: manage the lifecycle with DisposableEffect
 
-### The Fix: Method References or Remembered Lambdas
-
-We need to tell Compose: "This function doesn't change."
-
-**Option 1: Remember the Lambda**
-Wrap the lambda in `remember`. This tells Compose to reuse the same lambda instance across recompositions unless `viewModel` changes (which it implies it won't).
+If something needs cleanup, use `DisposableEffect`.
 
 ```kotlin
 @Composable
-fun UserList(users: List<User>, viewModel: UserViewModel) {
-    // ✅ GOOD: We create the lambda ONCE and reuse it.
-    // Compose knows this object hasn't changed, so it can skip recomposing the children.
-    val onUserClick = remember(viewModel) {
-        { user: User -> viewModel.onUserClicked(user) }
-    }
+fun SensorScreen() {
+  val context = LocalContext.current
 
-    LazyColumn {
-        items(users) { user ->
-            UserItem(
-                user = user,
-                onClick = { onUserClick(user) }
-            )
-        }
+  // ✅ GOOD:
+  // - setup happens when entering the composition
+  // - cleanup happens automatically when leaving the composition
+  DisposableEffect(context) {
+    val helper = SensorHelper(context)
+    helper.startListening()
+
+    onDispose {
+      helper.stopListening() // crucial: prevents Activity leaks
     }
+  }
+
+  Text("Listening…")
 }
 ```
 
-**Option 2: Method Reference (Cleaner)**
-If your function signature matches exactly, you can use a method reference. These are often treated as stable by the compiler.
+Beginner rule of thumb:
+- `remember { ... }` **does not** mean “Compose will clean it up for me”.
+- `DisposableEffect` is your “onEnter/onExit” for resources.
 
-```kotlin
-// ✅ BEST: Clean and performant
-UserItem(
-    user = user,
-    onClick = viewModel::onUserClicked
-)
-```
+## 4) Another common leak: collecting flows without tying them to lifecycle
 
-## The Context Leak: Ignoring Lifecycle
+Example of a risky pattern:
+- you start a collection in `LaunchedEffect`
+- but you accidentally create multiple collectors or keep references alive longer than expected
 
-Another common leak source is capturing an `Activity` or `View` context inside a `remember` block that outlives the composition. This happens frequently when integrating legacy SDKs or Sensor listeners.
+Safer options:
+- Use `collectAsStateWithLifecycle()` (from lifecycle-runtime-compose)
+- Or ensure your `LaunchedEffect` key is correct (not always `Unit`)
 
-```kotlin
-@Composable
-fun SensorDisplay() {
-    val context = LocalContext.current
-    
-    // ❌ DANGEROUS: 
-    // If 'SensorHelper' registers a listener on the Context (Activity) 
-    // and never unregisters it, the Activity will leak when you navigate away.
-    // 'remember' does NOT automatically clean up resources!
-    val sensorHelper = remember { SensorHelper(context) }
-    
-    Text("Sensor data: ${sensorHelper.data}")
-}
-```
+(We can write a dedicated note on this next — it’s a big source of subtle bugs.)
 
-### The Fix: DisposableEffect
+## 5) Verification checklist (make it measurable)
 
-If an object needs to be cleaned up (like removing a listener), you **must** use `DisposableEffect`. This block runs when the composable leaves the screen.
-
-```kotlin
-@Composable
-fun SensorDisplay() {
-    val context = LocalContext.current
-    
-    // ✅ GOOD: manage the lifecycle explicitly
-    DisposableEffect(context) {
-        val helper = SensorHelper(context)
-        helper.startListening()
-        
-        // This block runs when the composable is removed from the UI tree
-        onDispose {
-            helper.stopListening() // Cleanup prevents the leak!
-        }
-    }
-}
-```
-
-## How to Detect Leaks with LeakCanary
-
-Don't guess. Use **LeakCanary**. It now has excellent support for detecting Compose-specific leaks.
-
-1. Add `debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'` to your `build.gradle`.
-2. Run your app and navigate back and forth between screens.
-3. If you see the little bird icon notification, you have a leak.
-
-In Compose, a leak often manifests as the **Activity not being destroyed**, or a **View being kept alive** by a `CompositionLocal` that wasn't cleared.
+After your fix:
+- Repeat the reproduction steps
+- Confirm LeakCanary no longer reports the retained instance
+- Watch memory in Android Studio profiler: heap should stabilize
+- Scroll/navigate: jank should reduce because GC pressure is lower
 
 <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-8">
   <h3 class="text-sm font-bold text-yellow-800 uppercase tracking-wide mb-1">Key Takeaway</h3>
   <p class="text-sm text-yellow-900 m-0">
-    Before you optimize your <code>Draw</code> modifiers, check your memory. A garbage collection pause during an animation frame looks exactly like "jank."
+    Many “Compose performance” problems are really <strong>memory problems</strong>. Use LeakCanary to prove a leak, fix missing cleanups with <code>DisposableEffect</code>, then verify: fewer GC pauses → smoother frames.
   </p>
 </div>
