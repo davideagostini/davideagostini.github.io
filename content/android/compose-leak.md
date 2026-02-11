@@ -89,9 +89,9 @@ Don't guess. Use **LeakCanary**. It now has excellent support for detecting Comp
 
 In Compose, a leak often manifests as the **Activity not being destroyed**, or a **View being kept alive** by a `CompositionLocal` that wasn't cleared.
 
-<div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-8">
-  <h3 className="text-sm font-bold text-yellow-800 uppercase tracking-wide mb-1">Key Takeaway</h3>
-  <p className="text-sm text-yellow-900 m-0">
+<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-8">
+  <h3 class="text-sm font-bold text-yellow-800 uppercase tracking-wide mb-1">Key Takeaway</h3>
+  <p class="text-sm text-yellow-900 m-0">
     Before you optimize your <code>Draw</code> modifiers, check your memory. A garbage collection pause during an animation frame looks exactly like "jank."
   </p>
 </div>
