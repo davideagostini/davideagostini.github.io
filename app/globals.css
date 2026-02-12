@@ -37,18 +37,23 @@ body {
   padding: 0;
   margin: 1.5em 0;
   border-radius: 0.5rem;
-  overflow: hidden;
+  /* Allow horizontal scrolling for long lines (IDE-like behavior) */
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid #373e47;
 }
 
 .prose pre > code {
-  display: grid;
+  display: block;
   padding: 1rem;
   font-family: var(--font-mono);
   font-size: 0.875rem;
   line-height: 1.5;
   background-color: transparent !important;
   color: inherit;
+  white-space: pre; /* don't wrap code lines */
+  min-width: max-content; /* ensures horizontal scroll when needed */
 }
 
 /* Inline code style */
