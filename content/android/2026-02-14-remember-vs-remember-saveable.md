@@ -189,14 +189,22 @@ fun UserListScreen(viewModel: UserListViewModel = viewModel()) {
 
 ## Quick Decision Guide
 
-| Use Case | Solution |
-|----------|----------|
-| Simple counter, toggle state | `rememberSaveable` |
-| Search query, filter selection | `rememberSaveable` |
-| Heavy computed values | `remember` (or `derivedStateOf`) |
-| App data, user data, API responses | **ViewModel + StateFlow** |
-| Navigation state | `rememberSaveable` or Navigation library |
-| Animation states | `remember` (let Compose handle) |
+**🔴 Use `rememberSaveable` for:**
+- Simple counters, toggle states
+- Search queries, filter selections
+- Navigation state
+- Small, serializable UI state
+
+**🟡 Use `remember` for:**
+- Heavy computed values (performance)
+- Animation states
+- Temporary local state
+
+**🟢 Use ViewModel + StateFlow for:**
+- App data, user data
+- API responses, cached data
+- Complex state logic
+- State that should survive process death
 
 ## The Key Takeaway Box
 
