@@ -379,6 +379,56 @@ fun testChain() {
 
 ---
 
+## When to Use WorkManager (And When NOT To)
+
+### ✅ Use WorkManager When:
+
+| Scenario | Why WorkManager |
+|----------|-----------------|
+| **Periodic sync** | Hourly/daily data sync with constraints |
+| **Background upload** | Upload photos, logs, analytics |
+| **Database backup** | Periodic encrypted backup to cloud |
+| **Image processing** | Compress/resize in background |
+| **Notifications** | Schedule local notifications |
+| **Data migration** | Move data when app updates |
+| **Retry failed requests** | Network requests that might fail |
+
+### ✅ WorkManager Pros
+
+| Pro | Explanation |
+|-----|-------------|
+| **Survives process death** | Work continues even if app is killed |
+| **Respects Doze mode** | Android defers work intelligently |
+| **Battery optimized** | Batches work to minimize wake locks |
+| **Constraints** | Wait for WiFi, charging, battery |
+| **Chaining** | Sequential/parallel work sequences |
+| **Guaranteed execution** | Retries until success (with limits) |
+| **Testable** | Built-in test support |
+
+### ❌ Don't Use WorkManager When:
+
+| Scenario | Better Alternative |
+|----------|-----------------|
+| **Immediate UI-bound task** | Use `launch` in ViewModel |
+| **In-app async operation** | Use `suspendCoroutine` or Flow |
+| **Very frequent updates** | Use FCM (Firebase Cloud Messaging) |
+| **Real-time sync** | Use WebSocket or SSE |
+| **User-initiated action** | Use coroutines directly |
+| **Task < 1 minute** | Consider in-process coroutines |
+
+### ❌ WorkManager Cons
+
+| Con | Explanation |
+|-----|-------------|
+| **Minimum 15 min for periodic** | Can't run more frequently |
+| **Not real-time** | Designed for deferrable work |
+| **Overhead** | Worker setup takes time |
+| **Limited control** | Can't cancel mid-execution easily |
+| **Testing complexity** | Requires Instrumentation tests |
+| **Bundle size** | Adds ~100KB to APK |
+
+---
+
 ## Best Practices
 
 1. **Use CoroutineWorker** - Handles lifecycle automatically, easy to write async code
