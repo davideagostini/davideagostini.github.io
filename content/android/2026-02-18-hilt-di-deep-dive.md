@@ -143,16 +143,29 @@ object AppModule {
 
 ## Scopes: Controlling Lifetime
 
-### Default Scopes
+### Default Scopes (For Beginners)
 
-| Scope | Lifetime | Use For |
-|-------|----------|---------|
-| `@Singleton` | App-wide | Database, API, Repository |
-| `@ActivityRetainedScoped` | Activity lifetime | ViewModels |
-| `@ActivityScoped` | Activity lifetime | Dependencies needed in one Activity |
-| `@FragmentScoped` | Fragment lifetime | Dependencies needed in one Fragment |
-| `@ViewModelScoped` | ViewModel lifetime | Short-lived data |
-| `@EntryPointScoped` | Entry point lifetime | Specific use cases |
+**What scope should I use?**
+
+**🌍 App-wide (entire app):**
+- `@Singleton` → Database, API, Repository
+- One instance for the whole app
+
+**📱 Activity:**
+- `@ActivityRetainedScoped` → ViewModels
+- Survives configuration changes within an Activity
+
+**🧩 Fragment:**
+- `@FragmentScoped` → Dependencies needed in one screen
+- One instance per Fragment
+
+**⚡ ViewModel:**
+- `@ViewModelScoped` → Short-lived data
+- Survives only during ViewModel lifetime
+
+**🚪 Entry Point:**
+- `@EntryPointScoped` → Specific use cases
+- For non-Android classes like Workers
 
 ### Using Scopes
 
