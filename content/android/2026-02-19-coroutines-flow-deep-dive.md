@@ -5,7 +5,7 @@ description: "Master Kotlin Coroutines and Flow: suspend functions, structured c
 tags: ["Android", "Kotlin", "Coroutines", "Flow", "Async", "Performance"]
 ---
 
-Async programming in Android used to be a nightmare. Callbacks嵌套 (callback hell), memory leaks, and race conditions were everywhere.
+Async programming in Android used to be a nightmare. Callbacks (callback hell), memory leaks, and race conditions were everywhere.
 
 **Kotlin Coroutines** fix this. They make async code look like sync code—and they're now the standard for Android development.
 
@@ -237,13 +237,26 @@ class UserViewModel : ViewModel() {
 }
 ```
 
-### CoroutineScope Rules
+### CoroutineScope Rules (For Beginners)
 
-| Scope | When Cancelled | Use For |
-|-------|-----------------|----------|
-| `viewModelScope` | ViewModel destroyed | UI data loading |
-| `lifecycleScope` | Activity/Fragment destroyed | UI-bound tasks |
-| `GlobalScope` | Never (avoid!) | App-wide long tasks |
+**Which scope should I use?**
+
+**⚡ viewModelScope (Most Common)**
+- When: ViewModel is destroyed (user leaves screen)
+- Use for: Loading data for UI
+- Example: `viewModelScope.launch { fetchUser() }`
+- This is what you'll use 90% of the time!
+
+**🔄 lifecycleScope**
+- When: Activity or Fragment is destroyed
+- Use for: Tasks that should stop when user leaves the screen
+- Example: `lifecycleScope.launch { collectFlow() }`
+
+**⛔ GlobalScope (AVOID!)**
+- When: Never automatically cancelled
+- Use for: Almost never! Use the others instead
+- Why: Hard to test, can cause memory leaks
+- Rule: If you're using GlobalScope, think again!
 
 ---
 
