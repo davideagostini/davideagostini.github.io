@@ -4,11 +4,11 @@
 
 | # | Topic | Status | Date |
 |---|-------|--------|------|
-| 1 | **Hilt DI Deep Dive** | 🔥 Today | 2026-02-18 |
+| 1 | Hilt DI Deep Dive | ✅ Done | 2026-02-18 |
 | 2 | Room + SQLCipher | 📋 Pending | TBD |
 | 3 | Navigation Compose | 📋 Pending | TBD |
 | 4 | Material 3 Theming | 📋 Pending | TBD |
-| 5 | Coroutines + Flow | 📋 Pending | TBD |
+| 5 | **Coroutines + Flow** | ✅ Done | 2026-02-19 |
 | 6 | WorkManager | ✅ Done | 2026-02-17 |
 | 7 | Security (Biometrics, Keystore) | 📋 Pending | TBD |
 | 8 | Glance Widgets | 📋 Pending | TBD |
