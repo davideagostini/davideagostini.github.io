@@ -38,44 +38,116 @@ navController.navigate("user/123")  // ← Magic string, no autocomplete
 ### The New Way (Navigation 3)
 
 ```kotlin
+// ============================================================
+// NAVIGATION 3 IMPORTS - Different from Navigation 2!
+// ============================================================
+import androidx.navigation3.NavHost
+import androidx.navigation3.composable
+import androidx.navigation3.toRoute
+import androidx.navigation3.rememberNavController
+import androidx.lifecycle.viewmodel.compose.navigation3 as viewModelNavigation3
+
 // ✅ Navigation 3: Type-safe, compile-time checking!
 @Composable
 fun NavHost(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Routes.HOME
+        startDestination = Routes.HOME  // ← Use the sealed class!
     ) {
+        // ============================================================
+        // composable<T> - Type-safe route registration
+        // The <Routes.Home> tells the compiler exactly what to expect
+        // ============================================================
         composable<Routes.Home> { HomeScreen() }
         
         // GOOD: Type-safe route - compiler catches errors!
+        // If you make a typo, your app won't compile!
         composable<Routes.UserDetail> { backStackEntry ->
+            // ============================================================
+            // toRoute<T>() - Convert back stack entry to typed object
+            // This is the magic of Navigation 3!
+            // ============================================================
             val userId = backStackEntry.toRoute<Routes.UserDetail>().userId
             UserDetailScreen(userId = userId)
         }
     }
 }
 
-// Calling navigation:
-navController.navigate(Routes.UserDetail(userId = 123))  // ← Type-safe, autocomplete works!
+// Calling navigation - NO MORE STRINGS!
+navController.navigate(Routes.UserDetail(userId = 123))
+// ↑ Autocomplete works! Compiler knows exactly what to pass!
 ```
 
 ---
 
 ## Setting Up Navigation 3
 
-### 1. Add Dependencies
+### 1. Add Dependencies (Important!)
+
+**NOTE:** Navigation 3 is currently in **alpha/SNAPSHOT**. It uses new artifacts and requires adding a custom repository.
+
+```kotlin
+// ============================================================
+// IMPORTANT: Navigation 3 requires adding a SNAPSHOT repository!
+// ============================================================
+
+// settings.gradle.kts (project level)
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        // Add this for Navigation 3!
+        maven { url = uri("https://androidx.dev/snapshots/builds/13508953/artifacts/repository") }
+    }
+}
+```
 
 ```kotlin
 // build.gradle.kts (project level)
 plugins {
+    // Serialization plugin is REQUIRED for type-safe routes!
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
 }
+```
 
+```kotlin
 // build.gradle.kts (app level)
 dependencies {
-    implementation("androidx.navigation:navigation-compose:2.8.0")
+    // ============================================================
+    // Navigation 3 uses NEW artifacts (not navigation-compose)!
+    // ============================================================
+    
+    // Core Navigation 3 - REQUIRED
+    implementation("androidx.navigation3:navigation3-runtime:1.0.0-SNAPSHOT")
+    
+    // UI components for Compose - REQUIRED
+    implementation("androidx.navigation3:navigation3-ui:1.0.0-SNAPSHOT")
+    
+    // ViewModel integration - REQUIRED
+    implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-SNAPSHOT")
+    
+    // Material 3 support (optional, for NavigationSuite)
+    implementation("androidx.compose.material3:material3")
+    
+    // ============================================================
+    // Serialization - REQUIRED for type-safe routes!
+    // ============================================================
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 }
 ```
+
+---
+
+**Why is this different from Navigation 2?**
+
+| Navigation 2 | Navigation 3 |
+|--------------|--------------|
+| `androidx.navigation:navigation-compose` | `androidx.navigation3:navigation3-ui` |
+| No serialization needed | `@Serializable` required |
+| String-based routes | Type-safe routes |
+
+---
 
 ### 2. Define Routes with Serializable
 
@@ -112,35 +184,58 @@ sealed class Routes {
 ### Creating the NavHost
 
 ```kotlin
+// ============================================================
+// NAVIGATION 3 - Type-Safe Navigation
+// ============================================================
+
 @Composable
 fun AppNavigation() {
+    // ============================================================
+    // Step 1: Create NavController
+    // rememberNavController() - Remembers navigation state across recompositions
+    // Think of it as: "the brain that knows where we are"
+    // ============================================================
     val navController = rememberNavController()
     
+    // ============================================================
+    // Step 2: Define NavHost with start destination
+    // startDestination = The first screen to show
+    // ============================================================
     NavHost(
         navController = navController,
-        startDestination = Routes.Home
+        startDestination = Routes.Home  // ← First screen!
     ) {
         // ============================================================
-        // composable<T> - Type-safe route definition
+        // Step 3: Register screens with composable<T>
+        // <Routes.Home> tells the system: "This is what this screen needs"
         // ============================================================
         
         composable<Routes.Home> {
+            // This block runs when we're at the Home screen
             HomeScreen(
                 onUserClick = { userId ->
                     // ============================================================
-                    // Type-safe navigation - compiler knows what to pass!
+                    // Step 4: Navigate with TYPE SAFETY!
+                    // Routes.UserDetail(userId = userId) - Compiler checks this!
+                    // No more "user/123" strings!
                     // ============================================================
                     navController.navigate(Routes.UserDetail(userId = userId))
                 }
             )
         }
         
+        // ============================================================
+        // Step 5: Receiving typed arguments
+        // toRoute<T>() converts back stack to your sealed class
+        // ============================================================
         composable<Routes.UserDetail> { backStackEntry ->
             // ============================================================
-            // Get arguments as typed objects!
+            // MAGIC: toRoute<T>() extracts typed arguments!
+            // Before: val userId = arguments?.getString("userId")  ← String, could be null!
+            // After:  val userId = toRoute<Routes.UserDetail>().userId  ← Long, guaranteed!
             // ============================================================
             val route = backStackEntry.toRoute<Routes.UserDetail>()
-            val userId = route.userId  // ← Already typed as Long!
+            val userId = route.userId  // ← Already typed as Long! No null checks!
             
             UserDetailScreen(
                 userId = userId,
@@ -148,11 +243,14 @@ fun AppNavigation() {
             )
         }
         
+        // ============================================================
+        // Multiple arguments work the same way!
+        // ============================================================
         composable<Routes.ProductDetail> { backStackEntry ->
             val route = backStackEntry.toRoute<Routes.ProductDetail>()
             ProductDetailScreen(
-                productId = route.productId,
-                category = route.category
+                productId = route.productId,    // ← Long
+                category = route.category       // ← String with default!
             )
         }
     }
