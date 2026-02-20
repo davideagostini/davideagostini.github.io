@@ -82,70 +82,94 @@ navController.navigate(Routes.UserDetail(userId = 123))
 
 ## Setting Up Navigation 3
 
-### 1. Add Dependencies (Important!)
+### 1. Add Dependencies (Official Guide)
 
-**NOTE:** Navigation 3 is currently in **alpha/SNAPSHOT**. It uses new artifacts and requires adding a custom repository.
+**NOTE:** Navigation 3 is now **stable (v1.0.0)**! Use the version catalog approach for best results.
 
-```kotlin
-// ============================================================
-// IMPORTANT: Navigation 3 requires adding a SNAPSHOT repository!
-// ============================================================
+---
 
-// settings.gradle.kts (project level)
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-        // Add this for Navigation 3!
-        maven { url = uri("https://androidx.dev/snapshots/builds/13508953/artifacts/repository") }
-    }
-}
-```
+#### Option A: Using Version Catalog (Recommended)
 
 ```kotlin
-// build.gradle.kts (project level)
-plugins {
-    // Serialization plugin is REQUIRED for type-safe routes!
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
-}
+// gradle/libs.versions.toml
+[versions]
+nav3 = "1.0.0"
+lifecycleNav3 = "2.10.0-rc01"
+serialization = "1.7.3"
+
+[libraries]
+# Core Navigation 3 - REQUIRED
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3" }
+
+# ViewModel integration - Only if you need ViewModels scoped to screens
+androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleNav3" }
+
+# Material 3 Adaptive - For NavigationSuite (tablets)
+androidx-material3-adaptive-navigation3 = { module = "androidx.compose.material3:material3-adaptive-navigation-suite" }
+
+# Serialization - REQUIRED for type-safe routes!
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
+
+[plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
 ```
 
 ```kotlin
 // build.gradle.kts (app level)
+plugins {
+    id("kotlin-serialization")
+}
+
 dependencies {
-    // ============================================================
-    // Navigation 3 uses NEW artifacts (not navigation-compose)!
-    // ============================================================
+    // Core - REQUIRED
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.runtime)
     
-    // Core Navigation 3 - REQUIRED
-    implementation("androidx.navigation3:navigation3-runtime:1.0.0-SNAPSHOT")
+    // ViewModel integration - Optional
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     
-    // UI components for Compose - REQUIRED
-    implementation("androidx.navigation3:navigation3-ui:1.0.0-SNAPSHOT")
+    // Material 3 Adaptive - Optional (for tablets)
+    implementation(libs.androidx.material3.adaptive.navigation3)
     
-    // ViewModel integration - REQUIRED
-    implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-SNAPSHOT")
-    
-    // Material 3 support (optional, for NavigationSuite)
-    implementation("androidx.compose.material3:material3")
-    
-    // ============================================================
     // Serialization - REQUIRED for type-safe routes!
-    // ============================================================
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+    implementation(libs.kotlinx.serialization.core)
 }
 ```
 
 ---
 
-**Why is this different from Navigation 2?**
+#### Option B: Direct Dependencies (Simpler)
 
-| Navigation 2 | Navigation 3 |
-|--------------|--------------|
-| `androidx.navigation:navigation-compose` | `androidx.navigation3:navigation3-ui` |
-| No serialization needed | `@Serializable` required |
-| String-based routes | Type-safe routes |
+```kotlin
+// build.gradle.kts (app level)
+plugins {
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
+}
+
+dependencies {
+    // ============================================================
+    // Navigation 3 - Stable version (1.0.0)!
+    // ============================================================
+    
+    // Core - REQUIRED for all Navigation 3 apps
+    implementation("androidx.navigation3:navigation3-ui:1.0.0")
+    implementation("androidx.navigation3:navigation3-runtime:1.0.0")
+    
+    // ViewModel Integration - OPTIONAL
+    // Use this if you want ViewModels scoped to individual screens
+    implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:2.10.0-rc01")
+    
+    // Material 3 Adaptive - OPTIONAL
+    // Use this for NavigationSuite (tablets/foldables)
+    implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.0.0")
+    
+    // ============================================================
+    // Serialization - REQUIRED for type-safe routes!
+    // ============================================================
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3")
+}
+```
 
 ---
 
