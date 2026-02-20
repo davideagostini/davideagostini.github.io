@@ -6,8 +6,9 @@
 |---|-------|--------|------|
 | 1 | Hilt DI Deep Dive | ✅ Done | 2026-02-18 |
 | 2 | **Room + SQLCipher** | ✅ Done | 2026-02-20 |
-| 3 | Navigation Compose | 📋 Pending | TBD |
-| 4 | Material 3 Theming | 📋 Pending | TBD |
+| 3 | Navigation Compose (Basic) | ✅ Done | 2026-02-20 |
+| 4 | **Navigation Compose 3** | 🔥 Tomorrow | 2026-02-21 |
+| 5 | Material 3 Theming | 📋 Pending | TBD |
 | 5 | Coroutines + Flow | ✅ Done | 2026-02-19 |
 | 6 | WorkManager | ✅ Done | 2026-02-17 |
 | 7 | Security (Biometrics, Keystore) | 📋 Pending | TBD |
