@@ -8,11 +8,11 @@
 | 2 | **Room + SQLCipher** | ✅ Done | 2026-02-20 |
 | 3 | Navigation Compose (Basic) | ✅ Done | 2026-02-20 |
 | 4 | **Navigation Compose 3** | 🔥 Tomorrow | 2026-02-21 |
-| 5 | Material 3 Theming | 📋 Pending | TBD |
+| 5 | **Material 3 Theming** | ✅ Done | 2026-02-21 |
 | 5 | Coroutines + Flow | ✅ Done | 2026-02-19 |
 | 6 | WorkManager | ✅ Done | 2026-02-17 |
-| 7 | Security (Biometrics, Keystore) | 📋 Pending | TBD |
-| 8 | Glance Widgets | 📋 Pending | TBD |
+| 7 | Security (Biometrics, Keystore) | ✅ Done | 2026-02-22 |
+| 8 | **Glance Widgets** | ✅ Done | 2026-02-23 |
 | 9 | Testing (Unit + Compose) | 📋 Pending | TBD |
 | 10 | Baseline Profiles | 📋 Pending | TBD |
 
