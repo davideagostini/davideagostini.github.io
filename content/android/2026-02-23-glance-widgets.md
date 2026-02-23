@@ -410,14 +410,31 @@ class ClipVaultWidget : GlanceAppWidget() {
 
 ### Why Glance is Better
 
-| Feature | RemoteViews | Glance |
-|---------|-------------|--------|
-| **UI Framework** | XML only | Composable functions |
-| **State Management** | Manual (SharedPreferences) | `remember` + State |
-| **Theming** | Limited | Full Material 3 |
-| **Testing** | Difficult | Unit testable |
-| **Code Style** | Boilerplate | Declarative |
-| **Previews** | Hard to visualize | Easy with Compose Preview |
+Here's why Glance is the modern choice:
+
+**🎨 UI Framework**
+- **RemoteViews:** You write XML layouts. Hard to visualize, no preview.
+- **Glance:** You write Composable functions! Same as your app UI.
+
+**💾 State Management**
+- **RemoteViews:** You manually save state to SharedPreferences. Lots of boilerplate!
+- **Glance:** Just use `remember` like in Compose. Way simpler!
+
+**🎭 Theming**
+- **RemoteViews:** Limited colors, hard to customize.
+- **Glance:** Full Material 3 support! Automatic light/dark mode.
+
+**🧪 Testing**
+- **RemoteViews:** Need instrumentation tests, hard to mock.
+- **Glance:** Use regular Compose testing tools. Easy!
+
+**📝 Code Style**
+- **RemoteViews:** Lots of boilerplate - create views, set properties, handle clicks.
+- **Glance:** Declarative! Just describe what you want.
+
+**👁️ Previews**
+- **RemoteViews:** Hard to visualize without running on device.
+- **Glance:** Use Compose Preview! See your widget instantly.
 
 ---
 
