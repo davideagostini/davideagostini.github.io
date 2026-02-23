@@ -15,12 +15,23 @@ Let's learn how to use it properly!
 
 ### What Makes M3 Different?
 
-| Feature | Material 2 | Material 3 |
-|---------|-----------|-----------|
-| **Dynamic Colors** | ❌ No | ✅ Yes (Android 12+) |
-| **Color Tokens** | Basic (primary, secondary) | Extended (primary, onPrimary, primaryContainer...) |
-| **Dark Theme** | Simple inversion | Nuanced surface tones |
-| **Custom Themes** | Manual | Automatic from seed color |
+**Material 3** (also called "Material You") is a big upgrade from Material 2. Here's what changed:
+
+**🎨 Dynamic Colors (NEW!)**
+- **Material 2:** Fixed colors that never change
+- **Material 3:** Pulls colors from the user's wallpaper (Android 12+)
+
+**🌈 Extended Color Tokens**
+- **Material 2:** Just `primary`, `secondary` - simple
+- **Material 3:** Many options - `primary`, `onPrimary`, `primaryContainer`, `onPrimaryContainer`, etc.
+
+**🌙 Better Dark Theme**
+- **Material 2:** Just flips colors to dark (looks flat)
+- **Material 3:** Creates nuanced dark surfaces with better contrast
+
+**✨ Custom Themes**
+- **Material 2:** You had to manually define every color
+- **Material 3:** Give it ONE color (seed), it generates the whole scheme!
 
 ---
 
@@ -498,23 +509,54 @@ val Typography = Typography(
 
 ## Color Tokens Reference
 
+Material 3 provides many color tokens. Here's what each does:
+
 ### Primary Colors
 
-| Token | Use For | Light | Dark |
-|-------|---------|-------|------|
-| `primary` | Main actions | Purple 40 | Purple 80 |
-| `onPrimary` | Text on primary | White | Dark Purple |
-| `primaryContainer` | Cards, surfaces | Purple 80 | Purple 40 |
-| `onPrimaryContainer` | Text on primary container | Dark Purple | Purple 80 |
+**These are your main brand colors:**
+
+- **`primary`** → Main actions (buttons, links)
+  - Light: Purple 40
+  - Dark: Purple 80
+
+- **`onPrimary`** → Text/icons ON TOP OF primary color
+  - Light: White
+  - Dark: Dark Purple
+
+- **`primaryContainer`** → Cards, surfaces that need subtle emphasis
+  - Light: Purple 80
+  - Dark: Purple 40
+
+- **`onPrimaryContainer`** → Text ON TOP OF primary container
+  - Light: Dark Purple
+  - Dark: Purple 80
 
 ### Surface Colors
 
-| Token | Use For | Light | Dark |
-|-------|---------|-------|------|
-| `surface` | Background | White | Dark |
-| `onSurface` | Text on surface | Dark | White |
-| `surfaceVariant` | Secondary surfaces | Light Gray | Dark Gray |
-| `onSurfaceVariant` | Text on surface variant | Gray | Light Gray |
+**These control backgrounds and text:**
+
+- **`surface`** → Main background color
+  - Light: White
+  - Dark: Dark Gray
+
+- **`onSurface`** → Main text color
+  - Light: Dark Gray
+  - Dark: White
+
+- **`surfaceVariant`** → Secondary surfaces (cards, dialogs)
+  - Light: Light Gray
+  - Dark: Dark Gray
+
+- **`onSurfaceVariant`** → Secondary text
+  - Light: Gray
+  - Dark: Light Gray
+
+### Secondary & Tertiary
+
+**Use these for accents and variety:**
+
+- **`secondary`** → Secondary actions, filters, tags
+- **`tertiary`** → Highlights, accents, decorative elements
 
 ---
 
