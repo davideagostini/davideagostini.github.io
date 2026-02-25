@@ -85,14 +85,14 @@ export default async function OpenGraphImage({
               width: "100%",
             }}
           >
-            <div style={{ display: "flex", fontSize: 28, color: "#ffffff", fontWeight: 400 }}>
+            <div style={{ display: "flex", fontSize: 22, color: "#ffffff", fontWeight: 400 }}>
               {date}
             </div>
 
             <div
               style={{
                 display: "flex",
-                fontSize: 28,
+                fontSize: 22,
                 color: "#ffffff",
                 fontWeight: 400,
               }}
