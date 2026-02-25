@@ -13,7 +13,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const ogImageUrl = `/android/${slug}/opengraph-image`;
+  // Bump this when you change OG image layout/styling to force social cache refresh.
+  const OG_IMAGE_VERSION = "v2";
+  const ogImageUrl = `/android/${slug}/opengraph-image?v=${OG_IMAGE_VERSION}`;
 
   return {
     title: `${post.title} | Android Engineering Notes`,
