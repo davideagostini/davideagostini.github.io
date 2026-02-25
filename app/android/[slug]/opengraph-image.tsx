@@ -27,10 +27,10 @@ export default async function OpenGraphImage({
           height: "100%",
           display: "flex",
           position: "relative",
-          background: "#030712",
-          color: "#f8fafc",
-          fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto",
-          border: "2px solid #111827",
+          background: "#f5f5f1",
+          color: "#18181b",
+          fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+          border: "2px solid #e4e4e0",
           padding: "56px 64px",
           boxSizing: "border-box",
         }}
@@ -67,7 +67,7 @@ export default async function OpenGraphImage({
               width: "100%",
             }}
           >
-            <div style={{ display: "flex", fontSize: 28, color: "#9ca3af", fontWeight: 600 }}>
+            <div style={{ display: "flex", fontSize: 28, color: "#18181b", fontWeight: 600 }}>
               {date}
             </div>
 
@@ -75,7 +75,7 @@ export default async function OpenGraphImage({
               style={{
                 display: "flex",
                 fontSize: 28,
-                color: "#9ca3af",
+                color: "#18181b",
                 fontWeight: 600,
               }}
             >
