@@ -59,6 +59,19 @@ export function getAllPostIds() {
   });
 }
 
+export function getPostFrontmatter(id: string) {
+  const fullPath = path.join(postsDirectory, `${id}.md`);
+  if (!fs.existsSync(fullPath)) return null;
+
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const matterResult = matter(fileContents);
+
+  return {
+    id,
+    ...(matterResult.data as { date: string; title: string; description: string; tags: string[] }),
+  };
+}
+
 export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   if (!fs.existsSync(fullPath)) return null;
