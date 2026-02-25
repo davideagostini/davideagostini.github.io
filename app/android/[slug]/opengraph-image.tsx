@@ -66,7 +66,7 @@ export default async function OpenGraphImage({
             style={{
               display: "flex",
               maxWidth: "86%",
-              fontSize: 72,
+              fontSize: 62,
               lineHeight: 1.05,
               fontWeight: 700,
               letterSpacing: "-0.03em",
