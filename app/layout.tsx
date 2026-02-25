@@ -116,11 +116,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script
-          defer
-          src="https://geo-tracker-ochre.vercel.app/events.js"
-          data-website-id="davideagostini"
-        ></script>
       </head>
       <body
         className={`${jetbrainsMono.variable} font-mono antialiased`}
