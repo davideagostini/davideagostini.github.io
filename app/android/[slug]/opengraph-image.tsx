@@ -8,6 +8,19 @@ export const size = {
 };
 export const contentType = "image/png";
 
+async function loadJetBrainsMono(weight: 400 | 600 | 700) {
+  const cssUrl = `https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@${weight}&display=swap`;
+  const css = await (await fetch(cssUrl)).text();
+  const match = css.match(/src: url\(([^)]+)\) format\('(opentype|truetype|woff2)'\)/);
+
+  if (!match) {
+    throw new Error("Failed to load JetBrains Mono font");
+  }
+
+  const fontFileUrl = match[1];
+  return fetch(fontFileUrl).then((res) => res.arrayBuffer());
+}
+
 export default async function OpenGraphImage({
   params,
 }: {
@@ -19,6 +32,11 @@ export default async function OpenGraphImage({
   const title = post?.title ?? "Android Engineering Notes";
   const date = post?.date ?? "";
 
+  const [jbMono400, jbMono700] = await Promise.all([
+    loadJetBrainsMono(400),
+    loadJetBrainsMono(700),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -29,7 +47,7 @@ export default async function OpenGraphImage({
           position: "relative",
           background: "#f5f5f1",
           color: "#18181b",
-          fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace",
+          fontFamily: "JetBrains Mono",
           border: "2px solid #e4e4e0",
           padding: "56px 64px",
           boxSizing: "border-box",
@@ -67,7 +85,7 @@ export default async function OpenGraphImage({
               width: "100%",
             }}
           >
-            <div style={{ display: "flex", fontSize: 28, color: "#18181b", fontWeight: 600 }}>
+            <div style={{ display: "flex", fontSize: 28, color: "#18181b", fontWeight: 400 }}>
               {date}
             </div>
 
@@ -76,7 +94,7 @@ export default async function OpenGraphImage({
                 display: "flex",
                 fontSize: 28,
                 color: "#18181b",
-                fontWeight: 600,
+                fontWeight: 400,
               }}
             >
               davideagostini.com
@@ -87,6 +105,20 @@ export default async function OpenGraphImage({
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "JetBrains Mono",
+          data: jbMono400,
+          weight: 400,
+          style: "normal",
+        },
+        {
+          name: "JetBrains Mono",
+          data: jbMono700,
+          weight: 700,
+          style: "normal",
+        },
+      ],
     }
   );
 }
