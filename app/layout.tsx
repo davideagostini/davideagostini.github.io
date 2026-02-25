@@ -8,7 +8,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://davideagostini.com"),
+  metadataBase: new URL("https://www.davideagostini.com"),
   title: "Davide Agostini | Android Security & Performance Engineer",
   description:
     "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose Architecture. Founder of ViaMetric.",
