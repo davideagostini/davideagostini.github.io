@@ -30,7 +30,6 @@ export default async function OpenGraphImage({
           background: "#030712",
           color: "#f8fafc",
           fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto",
-          borderRadius: 28,
           border: "2px solid #111827",
           padding: "56px 64px",
           boxSizing: "border-box",
@@ -68,33 +67,14 @@ export default async function OpenGraphImage({
               width: "100%",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <div style={{ fontSize: 40, color: "#9ca3af", fontWeight: 600 }}>{date}</div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  borderRadius: 16,
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  color: "#e5e7eb",
-                  padding: "12px 18px",
-                  fontSize: 38,
-                  fontWeight: 500,
-                  maxWidth: 760,
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {title}
-              </div>
+            <div style={{ display: "flex", fontSize: 28, color: "#9ca3af", fontWeight: 600 }}>
+              {date}
             </div>
 
             <div
               style={{
                 display: "flex",
-                fontSize: 40,
+                fontSize: 28,
                 color: "#9ca3af",
                 fontWeight: 600,
               }}
