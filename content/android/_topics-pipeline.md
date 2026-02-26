@@ -1,32 +1,52 @@
 # Blog Topics Pipeline
 
-## Upcoming Topics
+## Upcoming Topics — Android App Architecture Track (Basics → Advanced)
 
-| # | Topic | Status | Date |
-|---|-------|--------|------|
-| 1 | Hilt DI Deep Dive | ✅ Done | 2026-02-18 |
-| 2 | **Room + SQLCipher** | ✅ Done | 2026-02-20 |
-| 3 | Navigation Compose (Basic) | ✅ Done | 2026-02-20 |
-| 4 | **Navigation Compose 3** | 🔥 Tomorrow | 2026-02-21 |
-| 5 | **Material 3 Theming** | ✅ Done | 2026-02-21 |
-| 5 | Coroutines + Flow | ✅ Done | 2026-02-19 |
-| 6 | WorkManager | ✅ Done | 2026-02-17 |
-| 7 | Security (Biometrics, Keystore) | ✅ Done | 2026-02-22 |
-| 8 | **Glance Widgets** | ✅ Done | 2026-02-23 |
-| 9 | Testing (Unit + Compose) | 📋 Pending | TBD |
-| 10 | Baseline Profiles | 📋 Pending | TBD |
+| # | Topic | Status | Target Date |
+|---|-------|--------|-------------|
+| 1 | Android Architecture Fundamentals: Layers, Boundaries, and Data Flow | ✍️ Drafted | 2026-02-26 |
+| 2 | UI Layer in Practice: State, Events, and UDF in Compose | 📋 Pending | 2026-02-27 |
+| 3 | Domain Layer Basics: Use Cases, Business Rules, and Testability | 📋 Pending | 2026-02-28 |
+| 4 | Data Layer Foundations: Repository Pattern (Single Source of Truth) | 📋 Pending | 2026-03-01 |
+| 5 | MVVM Done Right: ViewModel Contracts, Side Effects, and Lifecycle | 📋 Pending | 2026-03-02 |
+| 6 | Modularization 101: Feature Modules, Core Modules, and Gradle Strategy | 📋 Pending | 2026-03-03 |
+| 7 | Offline-First Architecture: Room + Network Sync + Conflict Resolution | 📋 Pending | 2026-03-04 |
+| 8 | Scalable Navigation Architecture: Nested Graphs, Type-Safe Routes, and Feature Isolation | 📋 Pending | 2026-03-05 |
+| 9 | Architecture for Security-Critical Features: Keystore, Biometrics, and Secret Boundaries | 📋 Pending | 2026-03-06 |
+| 10 | Performance by Design: Stability, Baseline Profiles, and Cold-Start Architecture | 📋 Pending | 2026-03-07 |
+| 11 | Multi-Module Testing Strategy: Unit, Integration, and UI at Architecture Level | 📋 Pending | 2026-03-08 |
+| 12 | Evolving Architecture: Refactoring Legacy Apps Toward Clean + Modular | 📋 Pending | 2026-03-09 |
 
 ---
 
-## Completed Topics
+## Already Published (Architecture-Relevant)
 
 | Date | Topic |
 |------|-------|
-| 2026-02-12 | Compose LazyColumn Recomposition Stability |
-| 2026-02-13 | LazyColumn Recomposition Performance |
-| 2026-02-13 | StateHolder vs ViewModel |
-| 2026-02-14 | remember vs rememberSaveable |
-| 2026-02-15 | LazyColumn Skip-Recomposition User List |
-| 2026-02-16 | LazyColumn Side Effects & Memory |
-| 2026-02-17 | LazyColumn Stability Budget |
-| 2026-02-17 | WorkManager Deep Dive |
+| 2026-02-13 | Compose StateHolder vs ViewModel |
+| 2026-02-18 | Hilt DI Deep Dive |
+| 2026-02-19 | Coroutines + Flow Deep Dive |
+| 2026-02-20 | Navigation Compose (Basic) |
+| 2026-02-20 | Room + SQLCipher Encrypted Database |
+| 2026-02-21 | Navigation Compose 3 (Type-Safe) |
+| 2026-02-22 | Android Security (Biometrics + Keystore) |
+| 2026-02-24 | Compose retain vs ViewModel |
+| 2026-02-24 | Android Testing: Unit + Compose |
+| 2026-02-25 | Baseline Profiles |
+
+---
+
+## Selection Rule (for next daily post)
+
+- Pick the first row with status `📋 Pending`.
+- Current next topic: **#2 — UI Layer in Practice: State, Events, and UDF in Compose**.
+
+---
+
+## Backlog / Optional Spin-Offs
+
+- MVI vs MVVM in Compose: practical trade-offs
+- Dependency graph anti-patterns in large Android apps
+- Dynamic Feature Modules and on-demand delivery architecture
+- KMP-ready architecture boundaries (what to isolate now)
+- Event-driven architecture on Android (when and when not)
