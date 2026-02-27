@@ -327,7 +327,108 @@ fun LoginRoute(
 
 ---
 
-## 4) Practical checklist for your next screen
+## 4) Bonus — Multi-UseCase ViewModel (real-world pattern)
+
+As apps grow, one screen usually needs more than one business action.
+
+For example, a Users screen may need to:
+
+- load users (initial data)
+- refresh users (manual retry or pull-to-refresh)
+- delete a user
+- toggle user favorite status
+
+In that case, a ViewModel can depend on multiple use cases **without becoming a God object**, as long as responsibilities stay clear.
+
+```kotlin
+data class UsersUiState(
+    val isLoading: Boolean = false,
+    val users: List<User> = emptyList(),
+    val errorMessage: String? = null
+)
+
+sealed interface UsersAction {
+    data object OnScreenStarted : UsersAction
+    data object OnRefreshClicked : UsersAction
+    data class OnDeleteClicked(val userId: String) : UsersAction
+    data class OnFavoriteClicked(val userId: String) : UsersAction
+}
+
+class UsersViewModel(
+    private val getUsers: GetUsersUseCase,
+    private val refreshUsers: RefreshUsersUseCase,
+    private val deleteUser: DeleteUserUseCase,
+    private val toggleFavorite: ToggleFavoriteUseCase,
+) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(UsersUiState())
+    val uiState: StateFlow<UsersUiState> = _uiState.asStateFlow()
+
+    fun onAction(action: UsersAction) {
+        when (action) {
+            UsersAction.OnScreenStarted -> loadUsers()
+            UsersAction.OnRefreshClicked -> refresh()
+            is UsersAction.OnDeleteClicked -> delete(action.userId)
+            is UsersAction.OnFavoriteClicked -> favorite(action.userId)
+        }
+    }
+
+    private fun loadUsers() {
+        viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true, errorMessage = null) }
+            runCatching { getUsers() }
+                .onSuccess { users ->
+                    _uiState.update { it.copy(isLoading = false, users = users) }
+                }
+                .onFailure { t ->
+                    _uiState.update { it.copy(isLoading = false, errorMessage = t.message) }
+                }
+        }
+    }
+
+    private fun refresh() {
+        viewModelScope.launch {
+            // refresh use case might sync remote->local, then we reload state
+            runCatching { refreshUsers() }
+                .onSuccess { loadUsers() }
+                .onFailure { t ->
+                    _uiState.update { it.copy(errorMessage = t.message ?: "Refresh failed") }
+                }
+        }
+    }
+
+    private fun delete(userId: String) {
+        viewModelScope.launch {
+            runCatching { deleteUser(userId) }
+                .onSuccess { loadUsers() }
+                .onFailure { t ->
+                    _uiState.update { it.copy(errorMessage = t.message ?: "Delete failed") }
+                }
+        }
+    }
+
+    private fun favorite(userId: String) {
+        viewModelScope.launch {
+            runCatching { toggleFavorite(userId) }
+                .onFailure { t ->
+                    _uiState.update { it.copy(errorMessage = t.message ?: "Update failed") }
+                }
+        }
+    }
+}
+```
+
+### Why this stays clean
+
+- ViewModel coordinates actions and state transitions.
+- Each use case keeps business logic in Domain layer.
+- Data layer details remain hidden behind repository interfaces.
+
+A good rule: **many use cases are fine; many responsibilities in one class are not**.
+
+---
+
+## 5) Practical checklist for your next screen
 
 Before merging a screen, verify:
 
