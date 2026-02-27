@@ -5,7 +5,7 @@
 | # | Topic | Status | Target Date |
 |---|-------|--------|-------------|
 | 1 | Android Architecture Fundamentals: Layers, Boundaries, and Data Flow | ✍️ Drafted | 2026-02-26 |
-| 2 | UI Layer in Practice: State, Events, and UDF in Compose | 📋 Pending | 2026-02-27 |
+| 2 | UI Layer in Practice: State, Events, and UDF in Compose | ✅ Done (2026-02-27) | 2026-02-27 |
 | 3 | Domain Layer Basics: Use Cases, Business Rules, and Testability | 📋 Pending | 2026-02-28 |
 | 4 | Data Layer Foundations: Repository Pattern (Single Source of Truth) | 📋 Pending | 2026-03-01 |
 | 5 | MVVM Done Right: ViewModel Contracts, Side Effects, and Lifecycle | 📋 Pending | 2026-03-02 |
