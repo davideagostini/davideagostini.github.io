@@ -80,30 +80,58 @@ Why this hurts:
 
 ### ✅ GOOD: ViewModel owns state, UI just renders
 
-```kotlin
-// Represents the whole screen state in one immutable object
-// GOOD: single source of truth for the UI
+For beginners, this is the key mindset shift:
 
+- **Composable = renderer** (draws what state says)
+- **ViewModel = coordinator** (handles actions and updates state)
+- **UseCase = business entry point** (what the app should do)
+
+When you keep these roles separate, bugs become easier to trace.
+
+```kotlin
+// Represents the whole screen state in one immutable object.
+// GOOD: the UI reads ONE object instead of 3-4 scattered variables.
 data class UsersUiState(
     val isLoading: Boolean = false,
     val users: List<User> = emptyList(),
     val errorMessage: String? = null
 )
 
+// UI intents only. Keep them simple and explicit.
 sealed interface UsersAction {
     data object OnRefreshClicked : UsersAction
     data object OnRetryClicked : UsersAction
+}
+
+// Domain contract: this is what ViewModel calls.
+// It hides repository details from the UI layer.
+fun interface GetUsersUseCase {
+    suspend operator fun invoke(): List<User>
+}
+
+// Domain implementation example.
+class GetUsersUseCaseImpl(
+    private val repository: UsersRepository
+) : GetUsersUseCase {
+
+    override suspend fun invoke(): List<User> {
+        // Place business rules here (sorting/filter/validation), not in UI.
+        return repository.getUsers()
+            .sortedBy { it.name.lowercase() }
+    }
 }
 
 class UsersViewModel(
     private val getUsers: GetUsersUseCase
 ) : ViewModel() {
 
-    // GOOD: private mutable + public immutable exposure
+    // Private mutable state inside ViewModel.
+    // Public immutable state for the UI.
     private val _uiState = MutableStateFlow(UsersUiState(isLoading = true))
     val uiState: StateFlow<UsersUiState> = _uiState.asStateFlow()
 
     init {
+        // Initial load happens once when VM is created.
         loadUsers()
     }
 
@@ -116,11 +144,12 @@ class UsersViewModel(
 
     private fun loadUsers() {
         viewModelScope.launch {
-            // GOOD: update state atomically and predictably
+            // Start loading and clear old transient error.
             _uiState.update { it.copy(isLoading = true, errorMessage = null) }
 
             runCatching { getUsers() }
                 .onSuccess { result ->
+                    // Success path: update users and stop loading.
                     _uiState.update {
                         it.copy(
                             isLoading = false,
@@ -130,6 +159,7 @@ class UsersViewModel(
                     }
                 }
                 .onFailure { error ->
+                    // Error path: keep old list if useful, surface message.
                     _uiState.update {
                         it.copy(
                             isLoading = false,
@@ -145,9 +175,10 @@ class UsersViewModel(
 fun UsersRoute(
     viewModel: UsersViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    // GOOD: lifecycle-aware collection to avoid off-screen updates
+    // Lifecycle-aware collection avoids collecting while UI is off-screen.
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+    // Route layer connects ViewModel with pure UI renderer.
     UsersScreen(
         state = uiState,
         onAction = viewModel::onAction
@@ -159,8 +190,10 @@ fun UsersScreen(
     state: UsersUiState,
     onAction: (UsersAction) -> Unit
 ) {
+    // Pure rendering logic: no direct repository call, no business rule.
     when {
         state.isLoading -> CircularProgressIndicator()
+
         state.errorMessage != null -> {
             Column {
                 Text("Error: ${state.errorMessage}")
@@ -169,19 +202,30 @@ fun UsersScreen(
                 }
             }
         }
+
         else -> {
             Column {
                 Button(onClick = { onAction(UsersAction.OnRefreshClicked) }) {
                     Text("Refresh")
                 }
                 LazyColumn {
-                    items(state.users) { user -> Text(user.name) }
+                    items(state.users) { user ->
+                        Text(user.name)
+                    }
                 }
             }
         }
     }
 }
 ```
+
+Why this is beginner-friendly in practice:
+
+- if data is wrong -> inspect UseCase/Repository
+- if state transition is wrong -> inspect ViewModel
+- if layout is wrong -> inspect Composable
+
+Each bug has a clear home.
 
 ---
 
