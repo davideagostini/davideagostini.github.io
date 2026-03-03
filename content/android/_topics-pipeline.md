@@ -9,7 +9,7 @@
 | 3 | Domain Layer Basics: Use Cases, Business Rules, and Testability | ✅ Done (2026-02-28) | 2026-02-28 |
 | 4 | Data Layer Foundations: Repository Pattern (Single Source of Truth) | ✅ Done (2026-03-01) | 2026-03-01 |
 | 5 | MVVM Done Right: ViewModel Contracts, Side Effects, and Lifecycle | ✅ Done (2026-03-02) | 2026-03-02 |
-| 6 | Modularization 101: Feature Modules, Core Modules, and Gradle Strategy | 📋 Pending | 2026-03-03 |
+| 6 | Modularization 101: Feature Modules, Core Modules, and Gradle Strategy | ✅ Done (2026-03-03) | 2026-03-03 |
 | 7 | Offline-First Architecture: Room + Network Sync + Conflict Resolution | 📋 Pending | 2026-03-04 |
 | 8 | Scalable Navigation Architecture: Nested Graphs, Type-Safe Routes, and Feature Isolation | 📋 Pending | 2026-03-05 |
 | 9 | Architecture for Security-Critical Features: Keystore, Biometrics, and Secret Boundaries | 📋 Pending | 2026-03-06 |
@@ -39,7 +39,7 @@
 ## Selection Rule (for next daily post)
 
 - Pick the first row with status `📋 Pending`.
-- Current next topic: **#4 — Data Layer Foundations: Repository Pattern (Single Source of Truth)**.
+- Current next topic: **#7 — Offline-First Architecture: Room + Network Sync + Conflict Resolution**.
 
 ---
 
