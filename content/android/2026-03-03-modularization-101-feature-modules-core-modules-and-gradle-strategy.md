@@ -143,74 +143,110 @@ class ProfileUserReader : UserReader {
 
 ## 4) BAD vs GOOD #2 — Gradle dependency explosion
 
-### ❌ BAD: giant dependency graph from every feature
+This is one of the most common issues in modularized apps.
+
+You create many modules (good), but then each feature depends on almost every other module (bad).  
+At that point, you have “modularization on paper,” not real isolation.
+
+### Why dependency explosion is dangerous
+
+When one feature depends on too many modules:
+
+- compile classpath grows -> slower incremental builds
+- any change in shared modules triggers broad recompilation
+- teams accidentally use internals they should not touch
+- architecture rules become unenforceable
+
+In short: your module graph becomes a monolith with folders.
+
+### ❌ BAD example A: feature depends on many unrelated features
 
 ```kotlin
 // build.gradle.kts of :feature:payments
-// BAD: this module depends on too many unrelated modules.
-// Compile classpath becomes huge -> slower builds.
-
-plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-}
-
-android {
-    namespace = "com.example.feature.payments"
-}
+// BAD: this feature depends on multiple other features + heavy infra libs.
+// Payments now has broad visibility and weak boundaries.
 
 dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:profile"))
     implementation(project(":feature:search"))
+    implementation(project(":feature:settings"))
+
     implementation(project(":core:ui"))
     implementation(project(":core:data"))
     implementation(project(":core:model"))
     implementation(project(":core:common"))
+
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("androidx.room:room-ktx:2.7.0")
 }
 ```
 
-Problems:
+**What goes wrong in practice:**
 
-- Payment feature can accidentally use everything
-- Refactors trigger broad recompilation
-- Architectural drift becomes hard to stop
+- `:feature:payments` can call code from `:feature:search` “just because it can”
+- a small change in `:feature:profile` can recompile `:feature:payments`
+- new engineers can’t quickly understand ownership boundaries
 
-### ✅ GOOD: minimal API surface + explicit ownership
+### ❌ BAD example B: overusing `api` leaks transitive dependencies
 
 ```kotlin
-// build.gradle.kts of :feature:payments
-// GOOD: keep dependencies minimal and intentional.
-
-plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-}
-
-android {
-    namespace = "com.example.feature.payments"
-}
+// build.gradle.kts of :core:data
+// BAD: api leaks these dependencies to every consumer module.
 
 dependencies {
-    // UI primitives used by this feature's screens
-    implementation(project(":core:ui"))
-
-    // Shared models/contracts only
-    implementation(project(":core:model"))
-
-    // Feature-specific data code should stay inside this feature,
-    // unless truly reusable across many features.
-
-    // Use 'api' only when this module must expose types to consumers.
-    // Otherwise prefer 'implementation' to keep compile classpath smaller.
+    api(project(":core:model"))
+    api("com.squareup.retrofit2:retrofit:2.11.0")
+    api("androidx.room:room-ktx:2.7.0")
 }
 ```
 
+If many modules depend on `:core:data`, they all "see" Retrofit/Room types even when they shouldn’t.
+
+Result:
+
+- larger compile graph
+- tighter coupling to implementation details
+- harder migrations (e.g., Retrofit -> Ktor)
+
+### ✅ GOOD example A: keep feature dependencies minimal
+
+```kotlin
+// build.gradle.kts of :feature:payments
+// GOOD: depend only on what this feature actually needs.
+
+dependencies {
+    // Reusable UI building blocks only
+    implementation(project(":core:ui"))
+
+    // Shared domain models/contracts used by this feature
+    implementation(project(":core:model"))
+
+    // If payments has local data/network code, keep it inside this feature module
+    // unless it is truly shared across many features.
+}
+```
+
+### ✅ GOOD example B: prefer `implementation` to hide internals
+
+```kotlin
+// build.gradle.kts of :core:data
+// GOOD: implementation keeps internals private to this module.
+
+dependencies {
+    implementation(project(":core:model"))
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("androidx.room:room-ktx:2.7.0")
+}
+```
+
+Now consumers of `:core:data` don’t automatically compile against Retrofit/Room APIs.
+
+### ✅ GOOD example C: compose features only in :app
+
 ```kotlin
 // build.gradle.kts of :app
-// GOOD: app module composes feature modules at the top level.
+// GOOD: app is the composition root.
 
 dependencies {
     implementation(project(":feature:home"))
@@ -218,6 +254,27 @@ dependencies {
     implementation(project(":feature:payments"))
 }
 ```
+
+This keeps feature-to-feature coupling low.
+
+### Practical dependency rules you can adopt today
+
+1. **Feature modules should not depend on other feature modules** (default rule).
+2. Put shared contracts/models in `:core:model` or a small contract module.
+3. Use `implementation` by default; use `api` only with explicit reason.
+4. Keep heavy infra libs (Retrofit/Room) out of modules that don’t need them.
+5. Add architecture checks in code review (or with dependency graph tooling).
+
+### Quick “dependency smell” checklist
+
+If a feature module has any of these, investigate:
+
+- > 5–7 internal module dependencies
+- both `retrofit` and `room` in a pure UI feature
+- direct dependency on another feature module
+- many `api(...)` entries without clear justification
+
+These are early signals of dependency explosion.
 
 ---
 
