@@ -11,7 +11,7 @@
 | 5 | MVVM Done Right: ViewModel Contracts, Side Effects, and Lifecycle | ✅ Done (2026-03-02) | 2026-03-02 |
 | 6 | Modularization 101: Feature Modules, Core Modules, and Gradle Strategy | ✅ Done (2026-03-03) | 2026-03-03 |
 | 7 | Offline-First Architecture: Room + Network Sync + Conflict Resolution | ✅ Done (2026-03-04) | 2026-03-04 |
-| 8 | Scalable Navigation Architecture: Nested Graphs, Type-Safe Routes, and Feature Isolation | 📋 Pending | 2026-03-05 |
+| 8 | Scalable Navigation Architecture: Nested Graphs, Type-Safe Routes, and Feature Isolation | ✅ Done (2026-03-05) | 2026-03-05 |
 | 9 | Architecture for Security-Critical Features: Keystore, Biometrics, and Secret Boundaries | 📋 Pending | 2026-03-06 |
 | 10 | Performance by Design: Stability, Baseline Profiles, and Cold-Start Architecture | 📋 Pending | 2026-03-07 |
 | 11 | Multi-Module Testing Strategy: Unit, Integration, and UI at Architecture Level | 📋 Pending | 2026-03-08 |
