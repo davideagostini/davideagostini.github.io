@@ -1,0 +1,38 @@
+# Davide Agostini
+
+Senior Android Developer focused on Kotlin, Kotlin Multiplatform, and modern UIs with Compose Multiplatform.
+
+This site contains Davide Agostini's portfolio, selected Android and software projects, and technical Android engineering notes.
+
+## Key Pages
+
+- [Home](https://davideagostini.com/): portfolio, selected work, writing, background, and interests.
+- [Android Engineering Notes](https://davideagostini.com/android): technical notes on Jetpack Compose, Android architecture, performance, security, and production-grade Android development.
+
+## Selected Work
+
+- [Dunio](https://dunio.app): shared household finance for couples and households.
+- [Android Build Analyzer](https://github.com/davideagostini/android-build-analyzer): Gradle plugin for Android build hygiene, security checks, dependency analysis, and CI reports.
+- [ViaMetric](https://viametric.app): AI Search visibility analytics and LLM retrieval research.
+- [Notyze](https://github.com/davideagostini/notyze): secure note-taking backend built with Ktor and MongoDB.
+- [Translate AI](https://github.com/davideagostini/translate-ai-extension): Chrome extension for translating and summarizing text with AI.
+- [Tintracker](https://github.com/davideagostini/tintracker): Android activity and earnings tracking app.
+
+## Topics
+
+- Android
+- Kotlin
+- Kotlin Multiplatform
+- Compose Multiplatform
+- Jetpack Compose
+- Android architecture
+- Android security
+- Performance
+- AI search
+- Personal finance tools
+
+## Author Profiles
+
+- [GitHub](https://github.com/davideagostini)
+- [LinkedIn](https://www.linkedin.com/in/davideagostini/)
+- [Twitter/X](https://twitter.com/davideagostini)

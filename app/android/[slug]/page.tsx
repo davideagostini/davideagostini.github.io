@@ -1,4 +1,5 @@
 import { getPostData, getAllPostIds, getPostFrontmatter } from "@/lib/posts";
+import { SiteHeader } from "@/app/components/SiteHeader";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
@@ -20,11 +21,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | Android Engineering Notes`,
     description: post.description,
+    alternates: {
+      canonical: `/android/${slug}`,
+    },
     openGraph: {
       type: "article",
       title: post.title,
       description: post.description,
       url: `/android/${slug}`,
+      publishedTime: post.date,
+      modifiedTime: post.date,
+      authors: ["https://davideagostini.com"],
+      tags: post.tags,
       images: [
         {
           url: ogImageUrl,
@@ -74,29 +82,35 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   };
 
   return (
-    <main className="min-h-screen p-6 md:p-12 lg:p-16">
+    <main className="min-h-screen px-6 py-8 md:px-10 md:py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <div className="max-w-[680px] mx-auto">
-        <header className="mb-12">
-          <Link href="/android" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-zinc-900 mb-8 transition-colors">
-            <ArrowLeft className="w-3 h-3 mr-1" /> Back to Notes
-          </Link>
-          
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tighter text-zinc-900 mb-4">
-            {post.title}
-          </h1>
-          <div className="flex items-center gap-4 text-xs font-mono text-zinc-400 mb-8">
-            <time dateTime={post.date}>{post.date}</time>
-            <span className="w-1 h-1 bg-zinc-300 rounded-full"></span>
-            <span>By Davide Agostini</span>
-          </div>
-        </header>
+      <div className="mx-auto max-w-[980px]">
+        <SiteHeader />
 
-        <article className="prose prose-zinc prose-sm sm:prose-base max-w-none" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        <article className="mx-auto max-w-[680px]">
+          <header className="mb-12">
+            <Link href="/android" className="mb-10 inline-flex items-center gap-1 text-sm font-semibold text-zinc-500 hover:text-zinc-950 hover:underline dark:text-zinc-400 dark:hover:text-zinc-50">
+              <ArrowLeft className="h-4 w-4" /> Back to Android notes
+            </Link>
+            <p className="mb-5 font-mono text-xs font-bold uppercase tracking-widest text-android">
+              Android notes
+            </p>
+            <h1 className="mb-4 text-3xl font-semibold leading-tight tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-4xl">
+            {post.title}
+            </h1>
+            <div className="flex items-center gap-4 text-xs font-mono text-zinc-400 dark:text-zinc-500">
+              <time dateTime={post.date}>{post.date}</time>
+              <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
+              <span>By Davide Agostini</span>
+            </div>
+          </header>
+
+          <div className="prose prose-zinc prose-sm max-w-none dark:prose-invert sm:prose-base" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        </article>
       </div>
     </main>
   );

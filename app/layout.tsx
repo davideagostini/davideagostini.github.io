@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -8,10 +13,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.davideagostini.com"),
-  title: "Davide Agostini | Android Security & Performance Engineer",
+  metadataBase: new URL("https://davideagostini.com"),
+  title: "Davide Agostini | Senior Android Developer",
   description:
-    "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose Architecture. Founder of ViaMetric.",
+    "Senior Android Developer focused on Kotlin, Kotlin Multiplatform, and modern UIs with Compose Multiplatform.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Davide Agostini",
     "Android Engineer",
@@ -31,26 +39,26 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://davideagostini.com",
-    title: "Davide Agostini | Android Security & Performance Engineer",
+    title: "Davide Agostini | Senior Android Developer",
     description:
-      "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose Architecture.",
+      "Senior Android Developer focused on Kotlin, Kotlin Multiplatform, and modern UIs with Compose Multiplatform.",
     siteName: "Davide Agostini",
     images: [
       {
-        url: "/assets/profile.jpg",
-        width: 800,
-        height: 800,
-        alt: "Davide Agostini - Android Security Engineer",
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Davide Agostini - Senior Android Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Davide Agostini | Android Security & Performance Engineer",
+    title: "Davide Agostini | Senior Android Developer",
     description:
-      "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose.",
+      "Senior Android Developer focused on Kotlin, Kotlin Multiplatform, and Compose Multiplatform.",
     creator: "@davideagostini",
-    images: ["/assets/profile.jpg"],
+    images: ["/opengraph-image"],
   },
 };
 
@@ -71,17 +79,12 @@ export default function RootLayout({
         "https://github.com/davideagostini",
         "https://davideagostini.medium.com/",
       ],
-      jobTitle: "Senior Android Engineer",
+      jobTitle: "Senior Android Developer",
       worksFor: [
         {
           "@type": "Organization",
           name: "Synapses",
         },
-        {
-          "@type": "Organization",
-          name: "ViaMetric",
-          url: "https://viametric.app"
-        }
       ],
       knowsAbout: [
         "Android Security",
@@ -89,36 +92,65 @@ export default function RootLayout({
         "Trusted Execution Environment (TEE)",
         "Jetpack Compose Internals",
         "Kotlin Multiplatform",
+        "Compose Multiplatform",
         "System Design",
-        "AI Search Visibility"
+        "AI Search Visibility",
+        "Personal Finance Tools",
+        "Football"
       ],
       image: "https://davideagostini.com/assets/profile.jpg",
       description:
-        "Senior Android Engineer specializing in Security (StrongBox/TEE), Performance Optimization, and Jetpack Compose Architecture.",
+        "Senior Android Developer focused on Kotlin, Kotlin Multiplatform, and modern UIs with Compose Multiplatform.",
     },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Davide Agostini",
       "url": "https://davideagostini.com",
-      "description": "Engineering notes and portfolio of Davide Agostini, Android Security & Performance Specialist.",
+      "description": "Portfolio and Android engineering notes by Davide Agostini, Senior Android Developer.",
       "publisher": {
         "@type": "Person",
         "name": "Davide Agostini"
       }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Selected work by Davide Agostini",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://dunio.app",
+          "name": "Dunio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://github.com/davideagostini/android-build-analyzer",
+          "name": "Android Build Analyzer"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://viametric.app",
+          "name": "ViaMetric"
+        }
+      ]
     }
   ];
 
   return (
     <html lang="en">
       <head>
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
-        className={`${jetbrainsMono.variable} font-mono antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         {children}
       </body>

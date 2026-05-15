@@ -2,31 +2,32 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #F5F5F0;
+  --background: #ffffff;
   --foreground: #1A1A1A;
   --color-accent: #FF6B00;
+  --android-green: #3ddc84;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--color-accent);
-  --font-sans: var(--font-jetbrains-mono);
+  --color-android: var(--android-green);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
 
-/* Force light mode variables even if system is dark, for now, to ensure consistent style */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #F5F5F0;
-    --foreground: #1A1A1A;
+    --background: #09090b;
+    --foreground: #f4f4f5;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -58,9 +59,8 @@ body {
 
 /* Inline code style */
 .prose :not(pre) > code {
-  background-color: #e5e5e5;
-  color: #c7254e; /* Or a nice accent color */
-  color: #1a1a1a;
+  background-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  color: var(--foreground);
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   font-weight: 500;
