@@ -85,7 +85,7 @@ export async function getPostData(id: string) {
     .use(rehypePrettyCode, {
       theme: 'github-dark-dimmed',
       keepBackground: true,
-      onVisitLine(node: any) {
+      onVisitLine(node: { children: unknown[] }) {
         if (node.children.length === 0) {
           node.children = [{ type: 'text', value: ' ' }];
         }

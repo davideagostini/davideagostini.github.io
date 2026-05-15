@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Twitter } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { getSortedPostsData } from "@/lib/posts";
 import type { Metadata } from "next";
 
@@ -80,7 +80,6 @@ export default function AndroidNotes() {
             target="_blank"
             className="inline-flex items-center gap-2 px-4 py-2 border border-zinc-900 bg-zinc-900 text-white hover:bg-zinc-700 transition-all text-xs font-bold uppercase"
           >
-            <Twitter className="w-4 h-4" />
             <span>Get these daily on X</span>
           </a>
         </header>
