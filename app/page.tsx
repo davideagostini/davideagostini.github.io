@@ -99,34 +99,30 @@ export default function Home() {
                   systems than any success could have.
                 </p>
 
-                <ul className="space-y-3">
-                  <li>
-                    Lead Android Engineer at{" "}
-                    <Link href="https://www.synapseslab.com/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
-                      Synapses
-                    </Link>
-                    , architecting the BlueGPS indoor navigation platform.
-                  </li>
-                  <li>
-                    Freelance developer for{" "}
-                    <Link href="https://www.foodys.it/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
-                      Prestofood
-                    </Link>
-                    , Arm23, and{" "}
-                    <Link href="https://redraion.com/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
-                      Red Raion
-                    </Link>
-                    .
-                  </li>
-                  <li>
-                    Computer Science educator for 7+ years, which drives my passion for writing
-                    detailed engineering notes.
-                  </li>
-                </ul>
+                <p>
+                  I currently work as Lead Android Engineer at{" "}
+                  <Link href="https://www.synapseslab.com/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
+                    Synapses
+                  </Link>
+                  , architecting the BlueGPS indoor navigation platform.
+                </p>
+
+                <p>
+                  Previously, I worked as a freelance developer for{" "}
+                  <Link href="https://www.foodys.it/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
+                    Prestofood
+                  </Link>
+                  , Arm23, and{" "}
+                  <Link href="https://redraion.com/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
+                    Red Raion
+                  </Link>
+                  , and spent 7+ years as a Computer Science educator, which still shapes how I
+                  write technical notes.
+                </p>
               </div>
 
               <div>
-                <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+                <h3 className="mb-2 font-mono text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
                   Interests
                 </h3>
                 <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
