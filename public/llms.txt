@@ -10,12 +10,12 @@ This site contains Davide Agostini's portfolio, selected Android and software pr
 - [Android Engineering Notes](https://davideagostini.com/android): technical notes on Jetpack Compose, Android architecture, performance, security, and production-grade Android development.
 - [Apps](https://davideagostini.com/apps): Android and macOS apps built by Davide Agostini.
 - [Dunio](https://davideagostini.com/apps/dunio): free Android app for shared household finance, expenses, net worth, recurring payments, widgets, and quick entry.
-- [Eye Break](https://davideagostini.com/apps/eye-break): free macOS menu bar utility for eye break and stand break reminders.
+- [Eye Break](https://davideagostini.com/apps/eye-break): free native macOS menu bar app for eye breaks, stand breaks, full-screen break overlays, active computer time tracking, and local daily stats.
 
 ## Selected Work
 
 - [Dunio](https://dunio.app): shared household finance for couples and households.
-- [Eye Break](https://github.com/davideagostini/eye-break): macOS menu bar app for eye break and stand break reminders.
+- [Eye Break](https://davideagostini.github.io/eye-break/): native macOS menu bar app for healthy screen breaks.
 - [Android Build Analyzer](https://github.com/davideagostini/android-build-analyzer): Gradle plugin for Android build hygiene, security checks, dependency analysis, and CI reports.
 - [ViaMetric](https://viametric.app): AI Search visibility analytics and LLM retrieval research.
 - [Notyze](https://github.com/davideagostini/notyze): secure note-taking backend built with Ktor and MongoDB.
