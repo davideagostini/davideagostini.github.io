@@ -28,6 +28,9 @@ export function SiteHeader({
           <SocialLink href="https://twitter.com/davideagostini" label="Twitter" />
           <SocialLink href="https://www.linkedin.com/in/davideagostini/" label="LinkedIn" />
           <SocialLink href="https://github.com/davideagostini" label="GitHub" />
+          <Link href="/apps" className="hover:text-zinc-950 hover:underline dark:hover:text-zinc-50">
+            Apps
+          </Link>
           <Link href="/android" className="inline-flex items-center gap-1 font-semibold text-android hover:underline">
             Android <ArrowRight className="h-4 w-4" />
           </Link>
