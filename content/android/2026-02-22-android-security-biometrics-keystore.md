@@ -203,14 +203,19 @@ class EncryptionManager(private val context: Context) {
 
 ## Best Practices Summary
 
-| Practice | Recommendation |
-|----------|----------------|
-| Biometric UI | Use `BiometricPrompt`, not deprecated APIs |
-| Fallback | Always provide password fallback |
-| Error handling | Don't reveal sensitive info in error messages |
-| Key storage | Use EncryptedSharedPreferences |
-| Cryptographic keys | Store in hardware-backed Keystore when possible |
-| Authentication | Require biometric auth for key usage |
+<table>
+  <thead>
+    <tr><th>Practice</th><th>Recommendation</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Biometric UI</td><td>Use <code>BiometricPrompt</code>, not deprecated APIs</td></tr>
+    <tr><td>Fallback</td><td>Always provide password fallback</td></tr>
+    <tr><td>Error handling</td><td>Don't reveal sensitive info in error messages</td></tr>
+    <tr><td>Key storage</td><td>Use EncryptedSharedPreferences</td></tr>
+    <tr><td>Cryptographic keys</td><td>Store in hardware-backed Keystore when possible</td></tr>
+    <tr><td>Authentication</td><td>Require biometric auth for key usage</td></tr>
+  </tbody>
+</table>
 
 <div class="key-takeaway">
 
