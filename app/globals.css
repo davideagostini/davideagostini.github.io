@@ -74,6 +74,7 @@ body {
 .app-chip {
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   border-radius: 999px;
   padding: 0.4rem 0.65rem;
   font-family: var(--font-mono);
@@ -82,16 +83,47 @@ body {
   letter-spacing: 0;
   line-height: 1;
   text-transform: uppercase;
-  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
   color: var(--foreground);
 }
 
-.app-chip.text-android {
-  background: var(--android-green);
-  color: #04210f;
+/* Set --accent on an ancestor (style={{ "--accent": app.accent }}). */
+.app-chip--accent {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: color-mix(in srgb, var(--accent) 70%, var(--foreground));
 }
 
-.app-chip.text-sky-500 {
-  background: #0ea5e9;
-  color: #f0f9ff;
+.app-chip--soon::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.app-card {
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  background:
+    radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%),
+    color-mix(in srgb, var(--foreground) 2%, var(--background));
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.app-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.app-shot {
+  border-radius: 1rem;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.06),
+    0 12px 32px -12px rgb(0 0 0 / 0.25);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

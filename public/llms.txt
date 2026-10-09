@@ -1,20 +1,22 @@
 # Davide Agostini
 
-Senior Android Developer focused on Kotlin, Kotlin Multiplatform, and modern UIs with Compose Multiplatform.
+Senior Android Developer working with Kotlin, Jetpack Compose and Kotlin Multiplatform, building and shipping independent apps: Dunio, Tuttodì and Eye Break.
 
-This site contains Davide Agostini's portfolio, selected Android and software projects, and technical Android engineering notes.
+This site contains Davide Agostini's apps, open source projects, and technical Android engineering notes.
 
 ## Key Pages
 
-- [Home](https://davideagostini.com/): portfolio, selected work, writing, background, and interests.
+- [Home](https://davideagostini.com/): apps, writing, open source projects, background, and interests.
 - [Android Engineering Notes](https://davideagostini.com/android): technical notes on Jetpack Compose, Android architecture, performance, security, and production-grade Android development.
-- [Apps](https://davideagostini.com/apps): Android and macOS apps built by Davide Agostini.
-- [Dunio](https://davideagostini.com/apps/dunio): free Android app for shared household finance, expenses, net worth, recurring payments, widgets, and quick entry.
+- [Apps](https://davideagostini.com/apps): Android, Wear OS and macOS apps built and published by Davide Agostini.
+- [Dunio](https://davideagostini.com/apps/dunio): free Android app for shared household finance, expenses, net worth, recurring payments, widgets, quick entry, and a Wear OS companion.
+- [Tuttodì](https://davideagostini.com/apps/tuttodi): local-first daily notes app for Android with bullets, photos, voice notes, links, search, and backups; no account, no cloud. Coming soon to Google Play.
 - [Eye Break](https://davideagostini.com/apps/eye-break): free native macOS menu bar app for eye breaks, stand breaks, full-screen break overlays, active computer time tracking, and local daily stats.
 
-## Selected Work
+## Apps and Projects
 
 - [Dunio](https://dunio.app): shared household finance for couples and households.
+- [Tuttodì](https://tuttodi.app): local-first daily notes for Android.
 - [Eye Break](https://davideagostini.github.io/eye-break/): native macOS menu bar app for healthy screen breaks.
 - [Android Build Analyzer](https://github.com/davideagostini/android-build-analyzer): Gradle plugin for Android build hygiene, security checks, dependency analysis, and CI reports.
 - [ViaMetric](https://viametric.app): AI Search visibility analytics and LLM retrieval research.
@@ -33,6 +35,8 @@ This site contains Davide Agostini's portfolio, selected Android and software pr
 - Android security
 - Performance
 - AI search
+- Wear OS
+- Local-first apps
 - Personal finance tools
 
 ## Author Profiles

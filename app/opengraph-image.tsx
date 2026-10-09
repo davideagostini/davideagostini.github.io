@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
+import { site } from "@/lib/site";
 
-export const alt = "Davide Agostini - Senior Android Developer";
+export const alt = `${site.name} - ${site.role}`;
 export const size = {
   width: 1200,
   height: 630,
@@ -28,10 +29,13 @@ export default function OpenGraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <div style={{ display: "flex", fontSize: 84, fontWeight: 800, letterSpacing: "-0.04em" }}>
-            Davide Agostini
+            {site.name}
           </div>
           <div style={{ display: "flex", maxWidth: 900, fontSize: 34, lineHeight: 1.35, color: "#3f3f46" }}>
-            Senior Android Developer • Kotlin & Kotlin Multiplatform • Modern UIs with Compose Multiplatform.
+            {site.tagline}
+          </div>
+          <div style={{ display: "flex", fontSize: 26, color: "#71717a" }}>
+            Dunio · Tuttodì · Eye Break · Android notes
           </div>
         </div>
       </div>

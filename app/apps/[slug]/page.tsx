@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { AppChips, accentStyle } from "@/app/components/AppShowcase";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { apps, getAppBySlug } from "@/lib/apps";
 
@@ -66,6 +67,7 @@ export default async function AppDetailPage({ params }: AppDetailPageProps) {
   }
 
   const pageUrl = `https://davideagostini.com/apps/${app.slug}`;
+  const playLink = app.links.find((link) => link.href.startsWith("https://play.google.com/"));
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -95,6 +97,10 @@ export default async function AppDetailPage({ params }: AppDetailPageProps) {
       operatingSystem: app.platform,
       isAccessibleForFree: app.price.toLowerCase() === "free",
       featureList: app.highlights,
+      ...(playLink && { downloadUrl: playLink.href }),
+      ...(app.screenshots.length > 0 && {
+        screenshot: app.screenshots.map((shot) => `https://davideagostini.com${shot.src}`),
+      }),
       offers: {
         "@type": "Offer",
         price: "0",
@@ -141,8 +147,8 @@ export default async function AppDetailPage({ params }: AppDetailPageProps) {
           Apps
         </Link>
 
-        <article>
-          <header className="mb-20 grid gap-10 md:grid-cols-[160px_1fr] md:items-start">
+        <article style={accentStyle(app)}>
+          <header className="mb-16 grid gap-10 md:grid-cols-[160px_1fr] md:items-start">
             <Image
               src={app.icon}
               width={160}
@@ -153,11 +159,9 @@ export default async function AppDetailPage({ params }: AppDetailPageProps) {
             />
 
             <div>
-              <p className="mb-5 flex flex-wrap gap-2">
-                <span className={`app-chip ${app.accent}`}>{app.platform}</span>
-                <span className="app-chip">{app.price}</span>
-                <span className="app-chip">{app.category}</span>
-              </p>
+              <div className="mb-5">
+                <AppChips app={app} withCategory />
+              </div>
               <h1 className="mb-5 text-5xl font-semibold leading-[1.02] tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-6xl">
                 {app.name}
               </h1>
@@ -166,12 +170,16 @@ export default async function AppDetailPage({ params }: AppDetailPageProps) {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                {app.links.map((link) => (
+                {app.links.map((link, index) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     target="_blank"
-                    className="inline-flex items-center gap-2 border border-zinc-200 px-4 py-2 text-sm font-semibold text-zinc-950 hover:border-zinc-950 dark:border-zinc-800 dark:text-zinc-50 dark:hover:border-zinc-50"
+                    className={
+                      index === 0
+                        ? "inline-flex items-center gap-2 rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-semibold text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
+                        : "inline-flex items-center gap-2 rounded-full border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-950 hover:border-zinc-950 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-zinc-50"
+                    }
                   >
                     {link.label}
                     <ArrowUpRight className="h-4 w-4" />
@@ -180,6 +188,23 @@ export default async function AppDetailPage({ params }: AppDetailPageProps) {
               </div>
             </div>
           </header>
+
+          {app.screenshots.length > 0 && (
+            <section className="mb-20" aria-label={`${app.name} screenshots`}>
+              <div className="app-card no-scrollbar -mx-6 flex snap-x gap-5 overflow-x-auto rounded-none px-6 py-8 md:mx-0 md:rounded-3xl md:px-8">
+                {app.screenshots.map((shot) => (
+                  <Image
+                    key={shot.src}
+                    src={shot.src}
+                    width={540}
+                    height={960}
+                    alt={shot.alt}
+                    className="app-shot w-[200px] shrink-0 snap-start sm:w-[210px]"
+                  />
+                ))}
+              </div>
+            </section>
+          )}
 
           <div className="grid gap-14 md:grid-cols-[1.2fr_0.8fr]">
             <section className="space-y-14">

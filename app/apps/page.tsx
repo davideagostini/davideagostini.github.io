@@ -1,19 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import { AppShowcase } from "@/app/components/AppShowcase";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { apps } from "@/lib/apps";
 
 export const metadata: Metadata = {
   title: "Apps | Davide Agostini",
-  description: "Small apps built by Davide Agostini for Android and macOS.",
+  description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, and Eye Break for screen breaks on macOS.",
   alternates: {
     canonical: "/apps",
   },
   openGraph: {
     title: "Apps | Davide Agostini",
-    description: "Small apps built by Davide Agostini for Android and macOS.",
+    description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, and Eye Break for screen breaks on macOS.",
     url: "https://davideagostini.com/apps",
     type: "website",
     siteName: "Davide Agostini",
@@ -29,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Apps | Davide Agostini",
-    description: "Small apps built by Davide Agostini for Android and macOS.",
+    description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, and Eye Break for screen breaks on macOS.",
     creator: "@davideagostini",
     images: ["/opengraph-image"],
   },
@@ -40,7 +38,7 @@ export default function AppsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Apps by Davide Agostini",
-    description: "A collection of Android and macOS apps built by Davide Agostini.",
+    description: "Apps built and published by Davide Agostini for Android, Wear OS and macOS.",
     url: "https://davideagostini.com/apps",
     author: {
       "@type": "Person",
@@ -85,48 +83,19 @@ export default function AppsPage() {
             Small products, built with care.
           </h1>
           <p className="max-w-[660px] text-xl leading-8 text-zinc-700 dark:text-zinc-300">
-            A compact collection of apps I build for Android, macOS, and the workflows I care
-            about.
+            Apps I design, build and publish myself, for Android, Wear OS and macOS. Free to use,
+            calm by design, and private by default.
           </p>
         </header>
 
-        <section>
+        <section className="mb-24">
           <h2 className="mb-8 font-mono text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-            Available apps
+            All apps
           </h2>
 
-          <div className="grid gap-x-10 gap-y-10 md:grid-cols-2">
+          <div className="space-y-6">
             {apps.map((app) => (
-              <Link
-                key={app.slug}
-                href={`/apps/${app.slug}`}
-                className="group block border-t border-zinc-200 pt-5 dark:border-zinc-800"
-              >
-                <div className="mb-5 flex items-start justify-between gap-4">
-                  <div className="flex min-w-0 items-center gap-4">
-                    <Image
-                      src={app.icon}
-                      width={64}
-                      height={64}
-                      alt={`${app.name} app icon`}
-                      className="h-16 w-16 rounded-2xl object-cover"
-                    />
-                    <div className="min-w-0">
-                      <h3 className="text-2xl font-semibold tracking-tight text-zinc-950 group-hover:underline dark:text-zinc-50">
-                        {app.name}
-                      </h3>
-                      <p className="mt-3 flex flex-wrap gap-2">
-                        <span className={`app-chip ${app.accent}`}>{app.platform}</span>
-                        <span className="app-chip">{app.price}</span>
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowRight className="mt-2 h-5 w-5 shrink-0 text-zinc-400 group-hover:text-zinc-950 dark:text-zinc-600 dark:group-hover:text-zinc-50" />
-                </div>
-                <p className="max-w-[620px] text-base leading-7 text-zinc-600 dark:text-zinc-400">
-                  {app.tagline}
-                </p>
-              </Link>
+              <AppShowcase key={app.slug} app={app} />
             ))}
           </div>
         </section>
