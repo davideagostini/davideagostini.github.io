@@ -2,7 +2,7 @@
 title: "Android Testing: Unit + Compose (Bad vs Good Patterns for Real Apps)"
 date: "2026-02-24"
 description: "Learn beginner-friendly Android testing with practical BAD vs GOOD examples for ViewModel unit tests and Jetpack Compose UI tests."
-tags: ["Android", "Testing", "Unit Testing", "Jetpack Compose", "Kotlin", "TDD"]
+tags: ["testing", "compose"]
 ---
 
 # Android Testing: Unit + Compose (Bad vs Good Patterns for Real Apps)

@@ -2,7 +2,7 @@
 title: "Compose LazyColumn Stability Budget for User Directories"
 date: "2026-02-17"
 description: "Teach Compose to skip useless work by stabilizing your user list models, derived filters, and side effects."
-tags: ["Jetpack Compose", "Performance", "LazyColumn", "Kotlin", "Android"]
+tags: ["compose", "performance"]
 ---
 
 Every morning our support team scrolls through a list of 3,000 users to see who needs help. The screen *looked* simple: a `LazyColumn` with avatars, names, and an online badge. Yet scrolling stuttered, memory usage crept up, and recomposition counters glowed red. Today we will fix that user directory step by step so that Compose can finally skip work instead of repainting every row on each update.

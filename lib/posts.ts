@@ -6,6 +6,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeStringify from 'rehype-stringify';
+import { getTopic, topics } from './topics';
 
 const postsDirectory = path.join(process.cwd(), 'content/android');
 
@@ -25,10 +26,13 @@ export function getSortedPostsData() {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
+    const data = matterResult.data as { date: string; title: string; description: string; tags: string[] };
+    // Fail the build on a tag that is not a curated topic.
+    data.tags.forEach(getTopic);
 
     return {
       id,
-      ...(matterResult.data as { date: string; title: string; description: string; tags: string[] }),
+      ...data,
     };
   });
   
@@ -39,6 +43,18 @@ export function getSortedPostsData() {
       return -1;
     }
   });
+}
+
+export function getPostsByTopic(slug: string) {
+  return getSortedPostsData().filter((post) => post.tags.includes(slug));
+}
+
+// Topics that have at least one post, with their post count, in lib/topics.ts order.
+export function getTopicsWithCounts() {
+  const posts = getSortedPostsData();
+  return topics
+    .map((topic) => ({ ...topic, count: posts.filter((post) => post.tags.includes(topic.slug)).length }))
+    .filter((topic) => topic.count > 0);
 }
 
 export function getAllPostIds() {

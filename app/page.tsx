@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "@/app/components/SiteHeader";
+import { SiteFooter } from "@/app/components/SiteFooter";
 import { AppShowcase } from "@/app/components/AppShowcase";
 import { apps } from "@/lib/apps";
 import { getSortedPostsData } from "@/lib/posts";
@@ -77,49 +78,24 @@ export default function Home() {
           </Section>
 
           <Section title="About">
-            <div className="space-y-10">
+            <div className="space-y-6">
               <div className="space-y-5 text-base leading-7 text-zinc-700 dark:text-zinc-300">
                 <p>
                   I work as {site.role} at{" "}
                   <Link href="https://www.synapseslab.com/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
                     Synapses
                   </Link>
-                  , architecting the BlueGPS indoor navigation platform.
+                  , where I work on Android for BlueGPS, a real-time location platform.
                 </p>
-
                 <p>
-                  I am also the creator of{" "}
-                  <Link href="https://viametric.app" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
-                    ViaMetric
-                  </Link>
-                  , a research project exploring how AI Search engines (like Perplexity and Gemini)
-                  perceive content. This &quot;failure&quot; taught me more about LLMs and retrieval
-                  systems than any success could have.
-                </p>
-
-                <p>
-                  Previously, I worked as a freelance developer for{" "}
-                  <Link href="https://www.foodys.it/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
-                    Prestofood
-                  </Link>
-                  , Arm23, and{" "}
-                  <Link href="https://redraion.com/" className="font-bold text-zinc-950 hover:underline dark:text-zinc-50">
-                    Red Raion
-                  </Link>
-                  , and spent 7+ years as a Computer Science educator, which still shapes how I
-                  write technical notes.
+                  Before that: ten years as a freelance web and Android developer, and seven years teaching
+                  Computer Science, which still shapes how I write technical notes.
                 </p>
               </div>
 
-              <div>
-                <h3 className="mb-2 font-mono text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-                  Interests
-                </h3>
-                <p className="text-base leading-7 text-zinc-700 dark:text-zinc-300">
-                  Outside Android, I spend time exploring AI products, personal finance tools, and
-                  sport, especially football.
-                </p>
-              </div>
+              <Link href="/about" className="inline-flex items-center gap-1 text-sm font-semibold text-zinc-950 hover:underline dark:text-zinc-50">
+                More about me <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </Section>
         </div>
@@ -146,9 +122,7 @@ export default function Home() {
           </p>
         </Section>
 
-        <footer className="border-t border-zinc-200 pt-8 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-          © {new Date().getFullYear()} {site.name} · {site.location}
-        </footer>
+        <SiteFooter />
       </div>
     </main>
   );

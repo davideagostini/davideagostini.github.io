@@ -2,7 +2,7 @@
 title: "Data Layer Foundations: Repository Pattern (Single Source of Truth)"
 date: "2026-03-01"
 description: "Learn how to structure your Android data layer with the Repository pattern, avoid common anti-patterns, and build a reliable Single Source of Truth with Room + network."
-tags: ["android", "architecture", "repository-pattern", "clean-architecture", "kotlin", "room", "networking"]
+tags: ["architecture", "data"]
 ---
 
 If your app reads from API, cache, and local DB without a clear strategy, bugs show up fast:

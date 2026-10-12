@@ -2,7 +2,7 @@
 title: "WorkManager Deep Dive: Background Jobs That Actually Work"
 date: "2026-02-17"
 description: "Master WorkManager for Android: periodic sync, constraints, chaining, retry policies, and real-world patterns for robust background processing."
-tags: ["Android", "WorkManager", "Background", "Kotlin", "Performance"]
+tags: ["background"]
 ---
 
 Your app needs to sync data in the background, but handling it yourself is a nightmare. Android kills your process, Doze mode blocks you, and users complain about battery drain.

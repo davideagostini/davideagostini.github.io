@@ -2,7 +2,7 @@
 title: "Modularization 101: Feature Modules, Core Modules, and Gradle Strategy"
 date: "2026-03-03"
 description: "Learn how to split an Android app into feature and core modules, avoid common modularization mistakes, and set up a Gradle strategy that scales."
-tags: ["android", "architecture", "modularization", "gradle", "gde"]
+tags: ["architecture"]
 ---
 
 Modularization is one of the highest-leverage architecture decisions you can make in Android.

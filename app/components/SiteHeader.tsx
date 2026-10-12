@@ -18,12 +18,12 @@ export function SiteHeader({ showHero = false }: SiteHeaderProps) {
           <Link href="/apps" className="font-semibold text-zinc-950 hover:underline dark:text-zinc-50">
             Apps
           </Link>
+          <Link href="/about" className="font-semibold text-zinc-950 hover:underline dark:text-zinc-50">
+            About
+          </Link>
           <Link href="/android" className="inline-flex items-center gap-1 font-semibold text-android hover:underline">
             Android notes <ArrowRight className="h-4 w-4" />
           </Link>
-          <SocialLink href={site.profiles.github} label="GitHub" />
-          <SocialLink href={site.profiles.linkedin} label="LinkedIn" />
-          <SocialLink href={site.profiles.twitter} label="X" />
         </div>
       </nav>
 
@@ -68,13 +68,5 @@ export function SiteHeader({ showHero = false }: SiteHeaderProps) {
         </header>
       )}
     </>
-  );
-}
-
-function SocialLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link href={href} target="_blank" className="hover:text-zinc-950 hover:underline dark:hover:text-zinc-50">
-      {label}
-    </Link>
   );
 }

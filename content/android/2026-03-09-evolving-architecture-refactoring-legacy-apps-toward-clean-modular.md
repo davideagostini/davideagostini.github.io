@@ -2,7 +2,7 @@
 title: "Evolving Architecture: Refactoring Legacy Apps Toward Clean + Modular"
 date: "2026-03-09"
 description: "A practical, beginner-friendly guide to migrating a legacy Android codebase to clean, modular architecture without stopping feature delivery."
-tags: ["android", "architecture", "clean-architecture", "modularization", "refactoring", "kotlin"]
+tags: ["architecture"]
 ---
 
 Legacy Android apps rarely start "clean".

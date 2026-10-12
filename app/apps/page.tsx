@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AppShowcase } from "@/app/components/AppShowcase";
 import { SiteHeader } from "@/app/components/SiteHeader";
+import { SiteFooter } from "@/app/components/SiteFooter";
 import { apps } from "@/lib/apps";
 
 export const metadata: Metadata = {
@@ -99,6 +100,8 @@ export default function AppsPage() {
             ))}
           </div>
         </section>
+
+        <SiteFooter />
       </div>
     </main>
   );

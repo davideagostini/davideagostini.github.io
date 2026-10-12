@@ -2,7 +2,7 @@
 title: "Android Security: Biometric Authentication & Keystore Mastery"
 date: "2026-02-22"
 description: "Learn how to implement biometric auth and secure key storage in Android with practical code examples"
-tags: ["Android", "Security", "Biometrics", "Keystore", "Kotlin"]
+tags: ["security"]
 ---
 
 # Android Security: Biometric Authentication & Keystore Mastery

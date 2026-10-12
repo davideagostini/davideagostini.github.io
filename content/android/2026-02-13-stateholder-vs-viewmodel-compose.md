@@ -2,7 +2,7 @@
 title: "Compose StateHolder vs ViewModel: When to Use Which"
 date: "2026-02-13"
 description: "Stop putting everything in ViewModel. Learn when to use local StateHolder (remember { ... }) vs when you need a ViewModel for proper lifecycle awareness."
-tags: ["Compose", "Architecture", "State Management"]
+tags: ["compose", "architecture"]
 ---
 
 When building screens in Jetpack Compose, a common source of confusion is deciding where to hold state:

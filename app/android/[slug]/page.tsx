@@ -1,8 +1,10 @@
 import { getPostData, getAllPostIds, getPostFrontmatter } from "@/lib/posts";
 import { SiteHeader } from "@/app/components/SiteHeader";
+import { SiteFooter } from "@/app/components/SiteFooter";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
+import { getTopic } from "@/lib/topics";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       publishedTime: post.date,
       modifiedTime: post.date,
       authors: ["https://davideagostini.com"],
-      tags: post.tags,
+      tags: post.tags.map((tag) => getTopic(tag).name),
       images: [
         {
           url: ogImageUrl,
@@ -78,7 +80,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     },
     "datePublished": post.date,
     "dateModified": post.date,
-    "keywords": post.tags.join(", ")
+    "keywords": post.tags.map((tag) => getTopic(tag).name).join(", ")
   };
 
   return (
@@ -107,10 +109,23 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
               <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
               <span>By Davide Agostini</span>
             </div>
+            <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+              {post.tags.map((tag) => (
+                <Link
+                  key={tag}
+                  href={`/android/topics/${tag}`}
+                  className="font-mono text-xs font-bold uppercase tracking-widest text-android hover:underline"
+                >
+                  {getTopic(tag).name}
+                </Link>
+              ))}
+            </div>
           </header>
 
           <div className="prose prose-zinc prose-sm max-w-none dark:prose-invert sm:prose-base" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
         </article>
+
+        <SiteFooter />
       </div>
     </main>
   );

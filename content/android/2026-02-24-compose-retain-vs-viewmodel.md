@@ -2,7 +2,7 @@
 title: "Compose retain vs ViewModel: Practical Guide, Trade-offs, and Real Examples"
 date: "2026-02-24"
 description: "A detailed guide to Compose retain: what it solves, what it does NOT replace, and concrete scenarios where retain is better than creating a ViewModel."
-tags: ["Compose", "Android", "Architecture", "State Management", "ViewModel"]
+tags: ["compose", "architecture"]
 ---
 
 `retain` is one of the most interesting additions in Compose state management because it fills a gap between:

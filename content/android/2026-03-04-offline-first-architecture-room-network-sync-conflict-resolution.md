@@ -2,7 +2,7 @@
 title: "Offline-First Architecture: Room + Network Sync + Conflict Resolution"
 date: "2026-03-04"
 description: "Build resilient Android apps with an offline-first data flow using Room, background sync, and clear conflict resolution rules."
-tags: ["android", "architecture", "offline-first", "room", "sync", "gde"]
+tags: ["architecture", "data"]
 ---
 
 Offline-first means your app is useful even when the internet is slow, unstable, or completely unavailable.

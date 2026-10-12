@@ -2,7 +2,7 @@
 title: "Coroutines + Flow Deep Dive: From Basics to Production Patterns"
 date: "2026-02-19"
 description: "Master Kotlin Coroutines and Flow: suspend functions, structured concurrency, StateFlow, SharedFlow, error handling, and real-world patterns for Android."
-tags: ["Android", "Kotlin", "Coroutines", "Flow", "Async", "Performance"]
+tags: ["background"]
 ---
 
 Async programming in Android used to be a nightmare. Callbacks (callback hell), memory leaks, and race conditions were everywhere.

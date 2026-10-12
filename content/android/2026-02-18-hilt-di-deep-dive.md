@@ -2,7 +2,7 @@
 title: "Hilt Dependency Injection Deep Dive: From Basics to Custom Scopes"
 date: "2026-02-18"
 description: "Master Hilt in Android: custom scopes, navigation scopes, qualifiers, component dependencies, and real-world patterns for clean architecture."
-tags: ["Android", "Hilt", "Dependency Injection", "Kotlin", "Clean Architecture"]
+tags: ["architecture"]
 ---
 
 Dependency Injection (DI) sounds complicated, but it's really just **giving your classes what they need to work**. Instead of creating their own tools, classes just ask for them.

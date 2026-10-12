@@ -2,7 +2,7 @@
 title: "Article Title"
 date: "YYYY-MM-DD"
 description: "Brief summary for the list view (SEO metadata)."
-tags: ["Tag1", "Tag2"]
+tags: ["compose", "performance"] # slugs from lib/topics.ts
 ---
 
 Start with a strong hook or problem statement.

@@ -1,6 +1,7 @@
-import Link from "next/link";
 import { getSortedPostsData } from "@/lib/posts";
 import { SiteHeader } from "@/app/components/SiteHeader";
+import { SiteFooter } from "@/app/components/SiteFooter";
+import { NoteCard, TopicNav } from "@/app/components/Notes";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -67,7 +68,7 @@ export default function AndroidNotes() {
       <div className="mx-auto max-w-[980px]">
         <SiteHeader />
 
-        <header className="mb-24 max-w-[720px]">
+        <header className="mb-12 max-w-[720px]">
           <p className="mb-5 font-mono text-xs font-bold uppercase tracking-widest text-android">
             Android notes
           </p>
@@ -80,6 +81,8 @@ export default function AndroidNotes() {
             Compose, Performance, and Security.
           </p>
         </header>
+
+        <TopicNav />
 
         <section>
           <h2 className="mb-8 font-mono text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
@@ -100,34 +103,9 @@ export default function AndroidNotes() {
             {posts.length === 0 && <p className="text-zinc-500 text-sm dark:text-zinc-400">No notes found.</p>}
           </div>
         </section>
+
+        <SiteFooter />
       </div>
     </main>
-  );
-}
-
-function NoteCard({ title, date, tags, desc, href }: { title: string; date: string; tags: string[]; desc: string; href: string }) {
-  return (
-    <Link href={href} className="group block border-t border-zinc-200 pt-5 dark:border-zinc-800">
-      <div className="mb-4">
-        <h3 className="text-2xl font-semibold leading-tight tracking-tight text-zinc-950 group-hover:underline dark:text-zinc-50">
-          {title}
-        </h3>
-        <time dateTime={date} className="mt-2 block font-mono text-xs text-zinc-400 dark:text-zinc-500">
-          {date}
-        </time>
-      </div>
-      
-      <div className="mb-4 flex flex-wrap gap-2">
-        {tags.map(tag => (
-          <span key={tag} className={tag.toLowerCase().includes("android") ? "font-mono text-xs font-bold uppercase tracking-widest text-android" : "font-mono text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500"}>
-            {tag}
-          </span>
-        ))}
-      </div>
-      
-      <p className="text-base leading-7 text-zinc-600 dark:text-zinc-400">
-        {desc}
-      </p>
-    </Link>
   );
 }

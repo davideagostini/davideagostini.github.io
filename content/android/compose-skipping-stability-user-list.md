@@ -2,7 +2,7 @@
 title: "Compose Performance: Skipping & Stability (User List Edition)"
 date: "2026-02-11"
 description: "Why your User List janks: unstable lambdas break skipping. Learn the fix with remember + method references, with beginner-friendly comments."
-tags: ["Compose", "Performance"]
+tags: ["compose", "performance"]
 ---
 
 If your **User List** in Jetpack Compose feels janky, the cause is often not “drawing”.

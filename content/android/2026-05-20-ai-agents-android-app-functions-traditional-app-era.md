@@ -2,7 +2,7 @@
 title: "The Rise of AI Agents and Android App Functions: Is the Traditional App Era Over?"
 date: "2026-05-20"
 description: "A reflection on how AI agents and Android App Functions could move apps from visual destinations to invisible capability layers."
-tags: ["android", "ai", "appfunctions", "gemini", "future-of-apps"]
+tags: ["ai"]
 ---
 
 We are witnessing the biggest paradigm shift in mobile computing since the launch of the App Store.

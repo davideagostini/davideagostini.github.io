@@ -2,7 +2,7 @@
 title: "Navigation Compose: Stop Fighting Your Router"
 date: "2026-02-20"
 description: "A practical guide to Navigation Compose that will make your app flow feel natural. No more argument passing nightmares or navigation graph spaghetti."
-tags: ["Android", "Jetpack Compose", "Navigation", "Best Practices"]
+tags: ["compose", "navigation"]
 ---
 
 # Navigation Compose: Stop Fighting Your Router

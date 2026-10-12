@@ -2,7 +2,7 @@
 title: "Scalable Navigation Architecture: Nested Graphs, Type-Safe Routes, and Feature Isolation"
 date: "2026-03-05"
 description: "Learn a scalable Navigation Compose setup with nested graphs, type-safe routes, and feature-isolated navigation contracts."
-tags: ["android", "architecture", "navigation", "compose", "modularization", "gde"]
+tags: ["architecture", "navigation"]
 ---
 
 Navigation works fine in small demos.

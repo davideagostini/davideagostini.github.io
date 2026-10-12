@@ -2,7 +2,7 @@
 title: "Searching Text, Voice Notes and Photos on the Phone: an EmbeddingGemma 2 Experiment on Android"
 date: "2026-10-09"
 description: "A beginner-friendly, step-by-step account of running EmbeddingGemma 2 fully on-device to search notes, voice recordings and photos by meaning, with every measurement from a Galaxy S22."
-tags: ["android", "ai", "on-device", "embeddings", "litert", "workmanager", "kotlin"]
+tags: ["ai", "background"]
 ---
 
 Search in most note apps works with words. You type "workout", and the app looks for notes that contain the letters w-o-r-k-o-u-t. If you wrote "gym" that day, you get nothing.

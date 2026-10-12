@@ -2,7 +2,7 @@
 title: "Material 3 Theming in Jetpack Compose"
 date: "2026-02-21"
 description: "Learn how to properly implement Material 3 theming in your Compose apps with dynamic colors, custom color schemes, and best practices."
-tags: ["Android", "Jetpack Compose", "Material 3", "Theming", "GDE"]
+tags: ["compose"]
 ---
 
 # Material 3 Theming in Jetpack Compose

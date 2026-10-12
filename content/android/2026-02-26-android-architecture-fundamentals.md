@@ -2,7 +2,7 @@
 title: "Android Architecture Fundamentals: Layers, Boundaries, and Data Flow"
 date: "2026-02-26"
 description: "A practical and detailed guide to Android app architecture: layer responsibilities, dependency boundaries, data flow, and real Kotlin examples with comments."
-tags: ["Android", "Architecture", "Clean Architecture", "Compose", "Kotlin"]
+tags: ["architecture"]
 ---
 
 Most Android architecture failures are not caused by developers writing "bad code."  

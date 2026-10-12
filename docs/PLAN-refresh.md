@@ -16,6 +16,7 @@ Stato: fatto, pubblicato su `main` (2026-10-09)
 - Posizionamento "Android dev + indie maker".
 - Restyling vero, non ritocco.
 - Ruolo: **Senior Android Developer**, ovunque (anche nell'About, che oggi dice "Lead").
+  Superata da `PLAN-favicon-topics-rss-about.md`: ora è **Senior Android Engineer**.
 - Notyze e Tintracker restano in home, ma a basso risalto.
 
 ## Passi

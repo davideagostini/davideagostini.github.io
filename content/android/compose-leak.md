@@ -2,7 +2,7 @@
 title: "Compose Performance: It's Probably a Leak"
 date: "2026-02-12"
 description: "When 'Compose is slow' is actually GC jank: how to find and fix memory leaks with LeakCanary (and correct side-effect cleanup)."
-tags: ["Compose", "Performance", "Memory"]
+tags: ["compose", "performance"]
 ---
 
 If someone tells you **“Compose is slow”**, don’t immediately start micro-optimizing modifiers.

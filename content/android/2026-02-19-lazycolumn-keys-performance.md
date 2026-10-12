@@ -2,7 +2,7 @@
 title: "Stop Recomposing Your List! LazyColumn Keys That Actually Work"
 date: "2026-02-19"
 description: "Learn how to use stable keys in LazyColumn to prevent unnecessary recompositions and boost your Compose UI performance."
-tags: ["Android", "Jetpack Compose", "Performance", "LazyColumn", "Kotlin"]
+tags: ["compose", "performance"]
 ---
 
 # Stop Recomposing Your List! LazyColumn Keys That Actually Work

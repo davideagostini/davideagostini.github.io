@@ -2,7 +2,7 @@
 title: "remember vs rememberSaveable in Compose: When to Use Each"
 date: "2026-02-14"
 description: "Learn the difference between remember and rememberSaveable in Jetpack Compose and when each one prevents state loss during configuration changes."
-tags: ["Jetpack Compose", "Performance", "State", "Android", "Kotlin"]
+tags: ["compose"]
 ---
 
 Ever wondered why your Compose UI loses state during rotation? Or why some values reset while others persist? The answer lies in understanding **`remember`** vs **`rememberSaveable`**.

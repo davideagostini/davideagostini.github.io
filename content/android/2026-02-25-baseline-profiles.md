@@ -2,7 +2,7 @@
 title: "Baseline Profiles for Android: Faster Startup (Bad vs Good Patterns)"
 date: "2026-02-25"
 description: "A beginner-friendly Baseline Profiles guide with practical BAD vs GOOD Kotlin examples to improve startup and scrolling performance."
-tags: ["Android", "Performance", "Baseline Profiles", "Jetpack", "Kotlin", "GDE"]
+tags: ["performance"]
 ---
 
 # Baseline Profiles for Android: Faster Startup (Bad vs Good Patterns)

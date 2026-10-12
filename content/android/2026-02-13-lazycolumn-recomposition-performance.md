@@ -2,7 +2,7 @@
 title: "Why Your LazyColumn Recomposes Everything: Understanding Item Stability in Compose"
 date: "2026-02-13"
 description: "Learn why your LazyColumn items keep recomposing and how to fix stability issues for smooth scrolling performance."
-tags: ["Jetpack Compose", "Performance", "LazyColumn", "Android", "Kotlin"]
+tags: ["compose", "performance"]
 ---
 
 Understanding LazyColumn performance is crucial for building smooth Android apps. One common pitfall? **Unstable data classes causing unnecessary recompositions**.

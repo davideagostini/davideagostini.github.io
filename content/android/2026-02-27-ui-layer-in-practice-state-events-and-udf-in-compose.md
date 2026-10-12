@@ -2,7 +2,7 @@
 title: "UI Layer in Practice: State, Events, and UDF in Compose"
 date: "2026-02-27"
 description: "Learn how to structure a Compose UI layer with clear state, one-off events, and unidirectional data flow using practical BAD vs GOOD examples."
-tags: ["android", "jetpack-compose", "architecture", "udf", "mvvm"]
+tags: ["architecture", "compose"]
 ---
 
 A clean UI layer is not about writing less code. It is about writing code that is easy to reason about.

@@ -2,7 +2,7 @@
 title: "Stabilizing LazyColumn User Lists for Skip-Friendly Recomposition"
 date: "2026-02-15"
 description: "How to structure user lists in Jetpack Compose so LazyColumn can skip work and stay memory-safe."
-tags: ["Jetpack Compose", "Performance", "LazyColumn", "Android", "Kotlin"]
+tags: ["compose", "performance"]
 ---
 
 LazyColumn is fast only when items are **stable** and **predictable**. If every user row looks "new" to Compose, it will happily recompose hundreds of items per frame, blow through your frame budget, and keep references alive longer than they should. Today’s goal: build a realistic "list of users" screen that actually lets the runtime skip work.

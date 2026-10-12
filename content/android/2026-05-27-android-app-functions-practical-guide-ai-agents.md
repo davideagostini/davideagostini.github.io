@@ -2,7 +2,7 @@
 title: "Android App Functions in Practice: Expose App Capabilities to AI Agents"
 date: "2026-05-27"
 description: "A practical guide to Android App Functions: dependencies, metadata, implementation, KDoc, AI-assisted workflows, and ADB testing."
-tags: ["android", "ai", "appfunctions", "gemini", "kotlin", "ksp", "adb"]
+tags: ["ai"]
 ---
 
 App Functions let an Android app expose specific capabilities to system services and AI agents.

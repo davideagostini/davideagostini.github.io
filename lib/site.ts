@@ -4,10 +4,10 @@
 export const site = {
   url: "https://davideagostini.com",
   name: "Davide Agostini",
-  role: "Senior Android Developer",
-  tagline: "Senior Android Developer. I build and ship my own apps.",
+  role: "Senior Android Engineer",
+  tagline: "Senior Android Engineer. I build and ship my own apps.",
   description:
-    "Senior Android Developer working with Kotlin, Jetpack Compose and Kotlin Multiplatform. I build and ship my own apps: Dunio, Tuttodì and Eye Break.",
+    "Senior Android Engineer working with Kotlin, Jetpack Compose and Kotlin Multiplatform. I build and ship my own apps: Dunio, Tuttodì and Eye Break.",
   location: "Sicily, Italy",
   twitterHandle: "@davideagostini",
   profiles: {
@@ -18,7 +18,7 @@ export const site = {
   },
   keywords: [
     "Davide Agostini",
-    "Senior Android Developer",
+    "Senior Android Engineer",
     "Android developer Italy",
     "Kotlin",
     "Jetpack Compose",

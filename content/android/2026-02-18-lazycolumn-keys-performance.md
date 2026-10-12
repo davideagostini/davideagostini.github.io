@@ -2,7 +2,7 @@
 title: "Jetpack Compose: The One Mistake That's Killing Your LazyColumn Performance"
 date: "2026-02-18"
 description: "Stop unnecessarily recomposing your LazyColumn items! Learn how to use keys properly and avoid the most common performance pitfall in Compose lists."
-tags: ["Jetpack Compose", "Android", "Performance", "LazyColumn", "Kotlin"]
+tags: ["compose", "performance"]
 ---
 
 # Jetpack Compose: The One Mistake That's Killing Your LazyColumn Performance

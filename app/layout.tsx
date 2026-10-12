@@ -102,6 +102,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" title={`Android Engineering Notes | ${site.name}`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

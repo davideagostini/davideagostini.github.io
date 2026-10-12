@@ -2,7 +2,7 @@
 title: "Navigation Compose 3: Type-Safe Routing Done Right"
 date: "2026-02-21"
 description: "Master Navigation Compose 3 with type-safe arguments, Serializable support, NavigationSuite for tablets, and the new routing patterns that make navigation effortless."
-tags: ["Android", "Jetpack Compose", "Navigation", "Navigation Compose 3", "Type-Safe"]
+tags: ["compose", "navigation"]
 ---
 
 Navigation Compose 3 is a game-changer. No more `arguments?.getString()`, no more runtime crashes from typos. The new type-safe system makes navigation bulletproof.

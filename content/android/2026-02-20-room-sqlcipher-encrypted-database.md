@@ -2,7 +2,7 @@
 title: "Room + SQLCipher Deep Dive: Encrypted Database for Android"
 date: "2026-02-20"
 description: "Master Room database with SQLCipher encryption: entities, DAOs, migrations, encrypted storage, and production patterns for secure Android apps."
-tags: ["Android", "Room", "SQLCipher", "Database", "Security", "Kotlin"]
+tags: ["data", "security"]
 ---
 
 Your app stores user data locally—but is it encrypted? On a rooted device, anyone can read your database files. That's a security nightmare.

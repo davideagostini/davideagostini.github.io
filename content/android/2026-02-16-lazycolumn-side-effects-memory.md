@@ -2,7 +2,7 @@
 title: "Compose LazyColumn Without Leaks: Stabilize Side Effects"
 date: "2026-02-16"
 description: "How to keep a user directory fast by taming LazyColumn recomposition, stability, and coroutine side effects."
-tags: ["Jetpack Compose", "Performance", "LazyColumn", "Kotlin", "Android"]
+tags: ["compose", "performance"]
 ---
 
 A "simple" user directory screen can tank frames if every row keeps its own mutable state, launches coroutines on scroll, or skips stable keys. Today we will harden a `LazyColumn` that renders hundreds of `UserItem`s, making it safe for skipping and free from item-scoped leaks.

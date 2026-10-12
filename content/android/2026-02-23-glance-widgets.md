@@ -2,7 +2,7 @@
 title: "Glance Widgets: Building Your First Android App Widget with Jetpack Compose"
 date: "2026-02-23"
 description: "Learn how to create modern Android widgets using Jetpack Glance — the declarative way to build app widgets with Compose."
-tags: ["Android", "Jetpack Glance", "Widgets", "Jetpack Compose", "Tutorial"]
+tags: ["compose"]
 ---
 
 # Glance Widgets: Building Your First Android App Widget with Jetpack Compose

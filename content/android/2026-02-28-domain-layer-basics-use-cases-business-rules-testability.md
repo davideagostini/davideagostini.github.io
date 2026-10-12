@@ -2,7 +2,7 @@
 title: "Domain Layer Basics: Use Cases, Business Rules, and Testability"
 date: "2026-02-28"
 description: "Learn what the Android Domain layer does, how to write focused Use Cases, and how BAD vs GOOD patterns improve clarity and testability."
-tags: ["android", "architecture", "clean-architecture", "domain-layer", "testing"]
+tags: ["architecture", "testing"]
 ---
 
 If your ViewModel feels heavy, your Domain layer is probably missing.

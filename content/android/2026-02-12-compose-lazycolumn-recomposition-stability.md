@@ -2,7 +2,7 @@
 title: "Jetpack Compose LazyColumn Performance: Stability, Keys, and Recomposition You Can Predict"
 date: "2026-02-12"
 description: "A beginner-friendly guide to speeding up Compose lists by fixing unstable models, adding stable keys, and avoiding accidental recompositions and side effects."
-tags: ["Android", "Jetpack Compose", "Performance", "LazyColumn"]
+tags: ["compose", "performance"]
 ---
 
 If you’ve ever built a `LazyColumn` that *looks* simple (a list of users) but starts to jank, recompose “too much”, or accidentally trigger side effects… you’re not alone.

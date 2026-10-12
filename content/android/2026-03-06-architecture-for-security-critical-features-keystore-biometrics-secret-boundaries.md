@@ -2,7 +2,7 @@
 title: "Architecture for Security-Critical Features: Keystore, Biometrics, and Secret Boundaries"
 date: "2026-03-06"
 description: "A beginner-friendly architecture guide for security-critical Android features using Keystore, biometrics, and strict secret boundaries."
-tags: ["android", "architecture", "security", "keystore", "biometrics", "gde"]
+tags: ["architecture", "security"]
 ---
 
 Security features fail less because of bad crypto and more because of bad architecture.

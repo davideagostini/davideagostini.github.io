@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { AppChips, accentStyle } from "@/app/components/AppShowcase";
 import { SiteHeader } from "@/app/components/SiteHeader";
+import { SiteFooter } from "@/app/components/SiteFooter";
 import { apps, getAppBySlug } from "@/lib/apps";
 
 type AppDetailPageProps = {
@@ -271,6 +272,8 @@ export default async function AppDetailPage({ params }: AppDetailPageProps) {
             </section>
           </div>
         </article>
+
+        <SiteFooter />
       </div>
     </main>
   );

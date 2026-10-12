@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { getSortedPostsData } from '@/lib/posts'
+import { getSortedPostsData, getTopicsWithCounts } from '@/lib/posts'
 import { apps } from '@/lib/apps'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -11,6 +11,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(post.date),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
+    }))
+
+    const topicUrls = getTopicsWithCounts().map((topic) => ({
+        url: `${baseUrl}/android/topics/${topic.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
     }))
 
     const appUrls = apps.map((app) => ({
@@ -39,6 +46,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'monthly',
             priority: 0.9,
         },
+        {
+            url: `${baseUrl}/about`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/android/topics`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.6,
+        },
+        ...topicUrls,
         ...appUrls,
         ...notesUrls,
     ]

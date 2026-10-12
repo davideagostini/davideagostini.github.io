@@ -2,7 +2,7 @@
 title: "MVVM Done Right: ViewModel Contracts, Side Effects, and Lifecycle"
 date: "2026-03-02"
 description: "A beginner-friendly guide to building robust MVVM screens in Android with clear UI contracts, one-off side effects, and lifecycle-safe collection in Compose."
-tags: ["android", "kotlin", "jetpack-compose", "mvvm", "architecture", "viewmodel"]
+tags: ["architecture", "compose"]
 ---
 
 MVVM is still one of the most practical patterns in Android, but many apps suffer from "MVVM in name only":
