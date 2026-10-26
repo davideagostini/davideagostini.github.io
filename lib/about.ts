@@ -63,7 +63,11 @@ export const skills: { group: string; items: string[] }[] = [
     items: ["Keystore & biometrics", "Bluetooth / BLE", "Location & RTLS", "Firebase"],
   },
   {
+    group: "Design systems & AI",
+    items: ["Design systems", "AI-assisted development", "On-device AI", "App Functions"],
+  },
+  {
     group: "Beyond Android",
-    items: ["On-device AI (LiteRT)", "App Functions", "Swift & macOS", "Ktor"],
+    items: ["Swift & macOS", "Ktor"],
   },
 ];

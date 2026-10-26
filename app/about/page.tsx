@@ -70,6 +70,10 @@ export default function About() {
                 , a real-time location platform used in factories, hospitals and offices.
               </p>
               <p>
+                Lately my work leans on two things: design systems that several teams build on, and AI, both running
+                on the device and as part of how I build software every day.
+              </p>
+              <p>
                 On the side I design, build and publish my own apps:{" "}
                 {apps.map((app, index) => (
                   <span key={app.slug}>

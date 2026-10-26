@@ -13,7 +13,7 @@ This site contains Davide Agostini's apps, open source projects, and technical A
 - [RSS feed](https://davideagostini.com/rss.xml): new Android notes.
 - [Apps](https://davideagostini.com/apps): Android, Wear OS and macOS apps built and published by Davide Agostini.
 - [Dunio](https://davideagostini.com/apps/dunio): free Android app for shared household finance, expenses, net worth, recurring payments, widgets, quick entry, and a Wear OS companion.
-- [Tuttodì](https://davideagostini.com/apps/tuttodi): local-first daily notes app for Android with bullets, photos, voice notes, links, search, and backups; no account, no cloud. Coming soon to Google Play.
+- [Tuttodì](https://davideagostini.com/apps/tuttodi): local-first daily notes app for Android with bullets, photos, voice notes, links, search, and backups; no account, no cloud. Available on Google Play.
 - [Eye Break](https://davideagostini.com/apps/eye-break): free native macOS menu bar app for eye breaks, stand breaks, full-screen break overlays, active computer time tracking, and local daily stats.
 
 ## Apps and Projects

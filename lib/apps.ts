@@ -108,9 +108,9 @@ export const apps: AppInfo[] = [
     platform: "Android",
     price: "Free + Pro",
     category: "Productivity",
-    status: "coming-soon",
+    status: "available",
     availability:
-      "Coming soon to Google Play, for Android 8.0 or later, in 11 languages. Free to use; Tuttodì Pro is an optional one-time purchase, no subscription.",
+      "Available on Android through Google Play, for Android 8.0 or later, in 11 languages. Free to use; Tuttodì Pro is an optional one-time purchase, no subscription.",
     icon: "/assets/apps/tuttodi.png",
     accent: "#e8b84a",
     screenshots: [
@@ -119,7 +119,10 @@ export const apps: AppInfo[] = [
       { src: "/assets/apps/tuttodi/media.webp", alt: "Tuttodì photos and voice notes" },
       { src: "/assets/apps/tuttodi/widget.webp", alt: "Tuttodì home screen widget" },
     ],
-    links: [{ label: "Website", href: "https://tuttodi.app/" }],
+    links: [
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=com.davideagostini.tuttodi" },
+      { label: "Website", href: "https://tuttodi.app/" },
+    ],
     highlights: [
       "Opens on today; earlier days sit behind like a deck of cards",
       "Bulleted and numbered lists with nesting, saved as you type",
@@ -143,10 +146,6 @@ export const apps: AppInfo[] = [
         question: "Is Tuttodì free?",
         answer:
           "Yes. Writing, photos, audio, search, and backups are free. Tuttodì Pro, a one-time purchase on Google Play, adds the fingerprint lock, the widget, and the evening reminder. No subscription.",
-      },
-      {
-        question: "When is it available?",
-        answer: "Tuttodì is coming soon to Google Play. The website at tuttodi.app will link to it at launch.",
       },
     ],
   },
