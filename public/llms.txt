@@ -1,6 +1,6 @@
 # Davide Agostini
 
-Senior Android Engineer working with Kotlin, Jetpack Compose and Kotlin Multiplatform, building and shipping independent apps: Dunio, Tuttodì and Eye Break.
+Senior Android Engineer working with Kotlin and Jetpack Compose, building and shipping independent apps: Dunio, Tuttodì and Eye Break.
 
 This site contains Davide Agostini's apps, open source projects, and technical Android engineering notes.
 
@@ -31,8 +31,6 @@ This site contains Davide Agostini's apps, open source projects, and technical A
 
 - Android
 - Kotlin
-- Kotlin Multiplatform
-- Compose Multiplatform
 - Jetpack Compose
 - Android architecture
 - Android security

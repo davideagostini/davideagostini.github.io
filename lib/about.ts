@@ -52,7 +52,7 @@ export const education: Role[] = [
 export const skills: { group: string; items: string[] }[] = [
   {
     group: "Android",
-    items: ["Kotlin", "Jetpack Compose", "Kotlin Multiplatform", "Coroutines & Flow", "Room", "Hilt", "Wear OS", "Glance widgets"],
+    items: ["Kotlin", "Jetpack Compose", "Coroutines & Flow", "Room", "Hilt", "Wear OS", "Glance widgets"],
   },
   {
     group: "Architecture & quality",

@@ -37,8 +37,8 @@ export function SiteHeader({ showHero = false }: SiteHeaderProps) {
               I build Android apps, <span className="text-zinc-400 dark:text-zinc-500">and ship my own.</span>
             </h1>
             <p className="max-w-[640px] text-xl leading-8 text-zinc-700 dark:text-zinc-300">
-              I&apos;m {site.name}. By day I work on Android with Kotlin, Jetpack Compose and Kotlin
-              Multiplatform. On the side I design, build and publish small, calm apps: Dunio,
+              I&apos;m {site.name}. By day I work on Android with Kotlin and Jetpack Compose. On the
+              side I design, build and publish small, calm apps: Dunio,
               Tuttodì and Eye Break.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
