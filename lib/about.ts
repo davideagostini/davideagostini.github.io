@@ -18,7 +18,7 @@ export const experience: Role[] = [
     org: "Synapses",
     href: "https://www.synapseslab.com/",
     period: "2017 – present",
-    summary: "Lead Android development for BlueGPS, including its Android SDK: 20+ versions released.",
+    summary: "Sole Android engineer on BlueGPS, owning the app and its Android SDK: 20+ versions released.",
     points: [
       "Secure sign-in with a full OAuth2 + PKCE flow and Encrypted DataStore for credentials.",
       "Offline map downloads with WorkManager and a periodic background sync, and a home that opens instantly from cache.",
