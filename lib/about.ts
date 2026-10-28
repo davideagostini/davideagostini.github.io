@@ -21,7 +21,7 @@ export const experience: Role[] = [
     summary: "Lead Android development for BlueGPS, including its Android SDK: 20+ versions released.",
     points: [
       "Secure sign-in with a full OAuth2 + PKCE flow and Encrypted DataStore for credentials.",
-      "Offline map downloads with WorkManager and a daily sync, so the app works with poor connectivity.",
+      "Offline map downloads with WorkManager and a periodic background sync, and a home that opens instantly from cache.",
       "Legacy code moved to MVVM + Clean Architecture, and a Jetpack Compose design system shared across teams.",
       "Since 2020, also Flutter web dashboards for internal use at large international companies.",
     ],
