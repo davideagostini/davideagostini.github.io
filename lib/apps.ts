@@ -103,7 +103,7 @@ export const apps: AppInfo[] = [
       "Tuttodì is a local-first daily notes app for Android. It opens on today, ready for the first line, and earlier days sit behind it like a deck of cards. Bullets, photos, voice notes, and links, all on your phone.",
     details: [
       "Each day is one note: bulleted and numbered lists, nesting, and autosave as you type. Only the days you wrote in come back, so there are no empty pages to scroll past.",
-      "Everything stays on the phone: no account, no cloud, no ads, no AI. Share a link, text, or image from any app and it lands at the end of today. Export everything to one .zip, or set a weekly backup to a folder you pick.",
+      "Everything stays on the phone: no account, no cloud, no ads, no AI. Share a link, text, or image from any app and it lands at the end of today. Export everything to one .zip and import it on another phone, or set a weekly backup to a folder you pick.",
     ],
     platform: "Android",
     price: "Free + Pro",
@@ -130,7 +130,7 @@ export const apps: AppInfo[] = [
       "Share from any app straight into today",
       "Full-text search and jump to any date",
       "Local-first: no account, no cloud, no ads, no AI",
-      "Export to one .zip and weekly backup to a folder you pick",
+      "Export to one .zip, import it on another phone, and weekly backup to a folder you pick",
     ],
     faq: [
       {
