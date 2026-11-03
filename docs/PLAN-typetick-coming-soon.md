@@ -30,17 +30,22 @@ Nuova voce dopo Tuttodì (le app Android insieme, in ordine di uscita):
 ## 2. Immagini
 
 - Icona: `../typetick/store/icon-512.png` → `public/assets/apps/typetick.png` (512×512, come Tuttodì).
-- Screenshot: 4 da `../typetick/website/src/assets/screens/en/` (01-type, 02-pill,
-  04-pomodoro, 08-until) → `public/assets/apps/typetick/*.webp` a 540×960, come quelli di Tuttodì.
-  Gli originali sono 1080×2340: il layout del sito forza 9:16 e li deformava, quindi sono
-  ritagliati a 1080×1920 da y=150 (via status bar e barra di navigazione) con `ffmpeg`, poi `cwebp`.
-  03-notification escluso: è un'immagine orizzontale (1080×530).
+- Screenshot: i primi 4 del Play Store, da `../typetick/store/en/` (01-type, 02-pill,
+  03-notification, 04-pomodoro, già 1080×1920) → `public/assets/apps/typetick/*.webp` a 540×960
+  con `cwebp`, come quelli di Tuttodì. Correzione di Davide (2026-11-03): le immagini sono quelle
+  dello store, non le catture del sito ritagliate.
 
 ## 3. Testi che elencano le app (un fatto, ogni posto che lo ripete)
 
 - `lib/site.ts` (description), `app/components/SiteHeader.tsx`, `app/apps/page.tsx`
   (3 description), `app/opengraph-image.tsx`, `public/llms.txt` (riga 3, elenco app, elenco siti):
   "Dunio, Tuttodì, TypeTick and Eye Break". In `llms.txt` TypeTick è "Coming soon to Google Play".
+
+## 4. Link della card
+
+Decisione di Davide (2026-11-03): la card di TypeTick dice "More about TypeTick" come Dunio e
+Tuttodì. In `app/components/AppShowcase.tsx` il testo "Take a look" per le app coming soon è
+tolto: ogni card dice "More about <nome>".
 
 ## Verifica
 

@@ -55,7 +55,7 @@ export function AppShowcase({ app }: { app: AppInfo }) {
         </p>
 
         <span className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">
-          {app.status === "coming-soon" ? "Take a look" : `More about ${app.name}`}
+          {`More about ${app.name}`}
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>

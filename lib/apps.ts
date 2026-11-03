@@ -168,10 +168,10 @@ export const apps: AppInfo[] = [
     icon: "/assets/apps/typetick.png",
     accent: "#2563eb",
     screenshots: [
-      { src: "/assets/apps/typetick/type.webp", alt: "TypeTick running timer with quick controls and recent timers" },
+      { src: "/assets/apps/typetick/type.webp", alt: "TypeTick: type it, it starts" },
       { src: "/assets/apps/typetick/pill.webp", alt: "TypeTick floating pill over other apps" },
+      { src: "/assets/apps/typetick/notification.webp", alt: "TypeTick countdown in the status bar and the notification" },
       { src: "/assets/apps/typetick/pomodoro.webp", alt: "TypeTick Pomodoro focus and break cycles" },
-      { src: "/assets/apps/typetick/until.webp", alt: "TypeTick timer running until a clock time" },
     ],
     links: [{ label: "Website", href: "https://typetick.app/" }],
     highlights: [
