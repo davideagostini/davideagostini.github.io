@@ -7,7 +7,7 @@ export const site = {
   role: "Senior Android Engineer",
   tagline: "Senior Android Engineer. I build and ship my own apps.",
   description:
-    "Senior Android Engineer working with Kotlin and Jetpack Compose. I build and ship my own apps: Dunio, Tuttodì and Eye Break.",
+    "Senior Android Engineer working with Kotlin and Jetpack Compose. I build and ship my own apps: Dunio, Tuttodì, TypeTick and Eye Break.",
   location: "Sicily, Italy",
   twitterHandle: "@davideagostini",
   profiles: {

@@ -6,13 +6,13 @@ import { apps } from "@/lib/apps";
 
 export const metadata: Metadata = {
   title: "Apps | Davide Agostini",
-  description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, and Eye Break for screen breaks on macOS.",
+  description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, TypeTick for timers you start by typing, and Eye Break for screen breaks on macOS.",
   alternates: {
     canonical: "/apps",
   },
   openGraph: {
     title: "Apps | Davide Agostini",
-    description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, and Eye Break for screen breaks on macOS.",
+    description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, TypeTick for timers you start by typing, and Eye Break for screen breaks on macOS.",
     url: "https://davideagostini.com/apps",
     type: "website",
     siteName: "Davide Agostini",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Apps | Davide Agostini",
-    description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, and Eye Break for screen breaks on macOS.",
+    description: "Apps built and published by Davide Agostini: Dunio for shared household finance, Tuttodì for daily notes, TypeTick for timers you start by typing, and Eye Break for screen breaks on macOS.",
     creator: "@davideagostini",
     images: ["/opengraph-image"],
   },

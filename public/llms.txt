@@ -1,6 +1,6 @@
 # Davide Agostini
 
-Senior Android Engineer working with Kotlin and Jetpack Compose, building and shipping independent apps: Dunio, Tuttodì and Eye Break.
+Senior Android Engineer working with Kotlin and Jetpack Compose, building and shipping independent apps: Dunio, Tuttodì, TypeTick and Eye Break.
 
 This site contains Davide Agostini's apps, open source projects, and technical Android engineering notes.
 
@@ -14,12 +14,14 @@ This site contains Davide Agostini's apps, open source projects, and technical A
 - [Apps](https://davideagostini.com/apps): Android, Wear OS and macOS apps built and published by Davide Agostini.
 - [Dunio](https://davideagostini.com/apps/dunio): free Android app for shared household finance, expenses, net worth, recurring payments, widgets, quick entry, and a Wear OS companion.
 - [Tuttodì](https://davideagostini.com/apps/tuttodi): local-first daily notes app for Android with bullets, photos, voice notes, links, search, and backups; no account, no cloud. Available on Google Play.
+- [TypeTick](https://davideagostini.com/apps/typetick): Android timer you start by typing ("5 min", "until 17:30", "pomodoro"), with a notification, a floating pill over other apps, and a reliable alarm; no account, no ads. Coming soon to Google Play.
 - [Eye Break](https://davideagostini.com/apps/eye-break): free native macOS menu bar app for eye breaks, stand breaks, full-screen break overlays, active computer time tracking, and local daily stats.
 
 ## Apps and Projects
 
 - [Dunio](https://dunio.app): shared household finance for couples and households.
 - [Tuttodì](https://tuttodi.app): local-first daily notes for Android.
+- [TypeTick](https://typetick.app): the Android timer you start by typing.
 - [Eye Break](https://davideagostini.github.io/eye-break/): native macOS menu bar app for healthy screen breaks.
 - [Android Build Analyzer](https://github.com/davideagostini/android-build-analyzer): Gradle plugin for Android build hygiene, security checks, dependency analysis, and CI reports.
 - [ViaMetric](https://viametric.app): AI Search visibility analytics and LLM retrieval research.

@@ -35,7 +35,7 @@ export default function OpenGraphImage() {
             {site.tagline}
           </div>
           <div style={{ display: "flex", fontSize: 26, color: "#71717a" }}>
-            Dunio · Tuttodì · Eye Break · Android notes
+            Dunio · Tuttodì · TypeTick · Eye Break · Android notes
           </div>
         </div>
       </div>
