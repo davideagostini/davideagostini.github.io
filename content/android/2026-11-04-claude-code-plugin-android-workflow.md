@@ -37,12 +37,17 @@ A Claude Code plugin is a folder with commands and hooks. Hooks are commands, he
 
 `android-workflow` has four parts:
 
-| Part | What it does |
-|---|---|
-| **One worktree per task** | `claude -w <name>` creates a copy of the repo on a new branch. The files listed in `.worktreeinclude` (`local.properties` and friends) are copied in. |
-| **`/android-workflow:ticket`** | From a Jira key, a GitHub issue or a sentence to a pull request. I approve twice: the plan, and the commit. |
-| **Build check (Stop hook)** | At the end of every reply, if sources or build files changed, it compiles the reference variant. Errors go back to the agent, which must fix them, or say why it can't, before it can stop. |
-| **Default-branch guard (PreToolUse hook)** | Blocks `git commit` and `git push` on the default branch, and pushes that target it. |
+<table>
+  <thead>
+    <tr><th>Part</th><th>What it does</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>One worktree per task</strong></td><td><code>claude -w &lt;name&gt;</code> creates a copy of the repo on a new branch. The files listed in <code>.worktreeinclude</code> (<code>local.properties</code> and friends) are copied in.</td></tr>
+    <tr><td><strong><code>/android-workflow:ticket</code></strong></td><td>From a Jira key, a GitHub issue or a sentence to a pull request. I approve twice: the plan, and the commit.</td></tr>
+    <tr><td><strong>Build check (Stop hook)</strong></td><td>At the end of every reply, if sources or build files changed, it compiles the reference variant. Errors go back to the agent, which must fix them, or say why it can't, before it can stop.</td></tr>
+    <tr><td><strong>Default-branch guard (PreToolUse hook)</strong></td><td>Blocks <code>git commit</code> and <code>git push</code> on the default branch, and pushes that target it.</td></tr>
+  </tbody>
+</table>
 
 Each project has a small, local data file that tells the plugin what to build:
 
@@ -182,11 +187,16 @@ There are 51 cases: the default branch with and without `origin/HEAD`, pushes li
 
 All 51 passed on the first run, which proves little: a test that can't fail always passes. So the agent put each old bug back into a copy of the plugin and ran the tests again:
 
-| Bug put back | Failing cases |
-|---|---|
-| 1. Fallback to `main` only | 3 |
-| 2. Ignore `-C` and `cd` | 7 |
-| 5. Watch only `.kt` and `.kts` | 4 |
+<table>
+  <thead>
+    <tr><th>Bug put back</th><th>Failing cases</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1. Fallback to <code>main</code> only</td><td>3</td></tr>
+    <tr><td>2. Ignore <code>-C</code> and <code>cd</code></td><td>7</td></tr>
+    <tr><td>5. Watch only <code>.kt</code> and <code>.kts</code></td><td>4</td></tr>
+  </tbody>
+</table>
 
 Every old bug makes the tests fail. Now they are worth trusting.
 
@@ -222,14 +232,19 @@ If your build has ktlint and you moved to AGP 9, it is worth checking that it st
 
 The fake `gradlew` proves the logic. This proves it against Gradle. In a temporary worktree of the test project, the agent fed the Stop hook fake input after each edit:
 
-| Edit | Hook result |
-|---|---|
-| No change | exit `0` at once, no Gradle |
-| Broken `strings.xml` in `app/res/values` | exit `2`, with the resource merger error |
-| Valid XML change | exit `0` |
-| Type error in `:feature:home` | exit `2`, with the `e:` line |
-| Same error again, agent already retried | exit `0`: it can stop, no loop |
-| A change to `libs.versions.toml` | it compiles, exit `0` |
+<table>
+  <thead>
+    <tr><th>Edit</th><th>Hook result</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>No change</td><td>exit <code>0</code> at once, no Gradle</td></tr>
+    <tr><td>Broken <code>strings.xml</code> in <code>app/res/values</code></td><td>exit <code>2</code>, with the resource merger error</td></tr>
+    <tr><td>Valid XML change</td><td>exit <code>0</code></td></tr>
+    <tr><td>Type error in <code>:feature:home</code></td><td>exit <code>2</code>, with the <code>e:</code> line</td></tr>
+    <tr><td>Same error again, agent already retried</td><td>exit <code>0</code>: it can stop, no loop</td></tr>
+    <tr><td>A change to <code>libs.versions.toml</code></td><td>it compiles, exit <code>0</code></td></tr>
+  </tbody>
+</table>
 
 This is what the agent sees when the XML is broken (the path shortened):
 
@@ -266,13 +281,18 @@ HomeViewModelTest: tests=4 failures=0 errors=0
 
 A device journey on a physical device, after `pm clear`:
 
-| # | Step | Result |
-|---|---|---|
-| 1 | Launch: "Today", Steps 6240 / 10000, 0 / 8 glasses, `−` disabled | ✅ |
-| 2 | `+` twice → 2 / 8 glasses | ✅ |
-| 3 | `−` → 1 / 8 glasses | ✅ |
-| 4 | Settings → the Settings screen opens | ✅ |
-| 5 | Back → Home, 1 / 8 kept | ✅ |
+<table>
+  <thead>
+    <tr><th>#</th><th>Step</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Launch: "Today", Steps 6240 / 10000, 0 / 8 glasses, <code>−</code> disabled</td><td>✅</td></tr>
+    <tr><td>2</td><td><code>+</code> twice → 2 / 8 glasses</td><td>✅</td></tr>
+    <tr><td>3</td><td><code>−</code> → 1 / 8 glasses</td><td>✅</td></tr>
+    <tr><td>4</td><td>Settings → the Settings screen opens</td><td>✅</td></tr>
+    <tr><td>5</td><td>Back → Home, 1 / 8 kept</td><td>✅</td></tr>
+  </tbody>
+</table>
 
 And a **"Not done"** section: no persistence, no strings in `strings.xml` because the module had none, no Compose UI test because the module had no test setup. I merged it myself. Merging stays mine.
 
@@ -310,7 +330,7 @@ Then GitHub rejected the first push of the test project twice, once with `Intern
 
 ## Limits
 
-- One Mac, one throwaway project, three tickets. A large real app has things the test project doesn't: local AARs, included builds, many flavors.
+- The tests in this post ran on the small test project. The plugin is also set up on a large app at work, with local AARs listed in `.worktreeinclude`, an included build and many flavors.
 - The guard reads command text. Quoted paths with spaces, aliases or a `cd` in the middle of a command slip through.
 - No lock on the shared emulator yet, and the branch cleanup after closing a renamed worktree is still unverified (points 6 and 7 of the review).
 - The agent set up the test project by following `setup.md` by hand. The `/android-workflow:setup` command itself was not part of these tests.
